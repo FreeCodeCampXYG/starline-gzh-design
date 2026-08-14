@@ -22,6 +22,7 @@
 - README 的安装、克隆和更新命令已切换到 Starline Fork；上游署名、灵感来源和上游 Release 图片链接继续保留。
 - 首次增强发布已通过 GitHub Pull Request #1 合并到 `main`，合并提交为 `9cdd6d8`；未直接推送或改写默认分支历史。
 - GitHub 仓库描述已更新为当前 8 套主题和增强能力，并增加 `agent-skill`、`claude-code`、`codex`、`markdown`、`wechat` 分类标签。
+- GitHub Fork 创建时默认关闭的 Issues 功能已显式开启；`bug_report.md`、`feature_request.md` 和 `theme_request.md` 可从新建 Issue 页面选择。
 
 ## Key Decisions
 - #6 是与 #7 重复的已关闭 PR，未重复合并；采用包含主题推荐规则的 #7。
@@ -68,6 +69,7 @@
 - 本次文档和模板更新后 `validate_skill.py .` 继续通过；README 的自然语言示例、验证命令和故障排查提醒均已消除。
 - 准备推送的 Git 工作树已重新执行全部门禁：`compileall` 通过；15/15 个组件库 `ERROR×0、WARN×0`；7 个文章画廊 HTML 全部合规；`validate_skill.py` 为 `ok=true`；`git diff --check` 通过。
 - 从远端 `main` 执行全新浅克隆后再次验证：工作树干净，`validate_skill.py` 为 `ok=true`，`compileall` 通过，15/15 个组件库 `ERROR×0、WARN×0`，根 `SKILL.md` 为 `name: starline-gzh-design`。
+- GitHub API 已复核仓库设置 `has_issues=true`，并确认 `main` 可读取 3 个 Issue 模板和 `config.yml`。
 
 ## Known Issues
 - `docs/gallery/index.html` 是导航网页，不是公众号正文，不能送入 `validate_gzh_html.py`；文章画廊文件与导航页需分开校验。
