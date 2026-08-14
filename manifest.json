@@ -1,0 +1,34 @@
+{
+  "name": "starline-gzh-design",
+  "version": "1.0.0",
+  "owner": "墨点星痕 (starline)",
+  "author": {
+    "name": "墨点星痕",
+    "english_name": "starline"
+  },
+  "updated_at": "2026-08-15",
+  "status": "active",
+  "maturity_tier": "scaffold",
+  "lifecycle_stage": "local",
+  "context_budget_tier": "extended",
+  "review_cadence": "as-needed",
+  "upstream_inspiration": "https://github.com/isjiamu/gzh-design-skill",
+  "naming": {
+    "prefix": "starline-",
+    "migration_from": "gzh-design"
+  },
+  "target_platforms": [
+    "openai",
+    "claude",
+    "generic",
+    "agent-skills-compatible"
+  ],
+  "release_gates": [
+    "root_entrypoint_isolation",
+    "frontmatter_directory_name_alignment",
+    "powershell_utf8_guard",
+    "component_lint",
+    "html_output_validation",
+    "local_install_verification"
+  ]
+}

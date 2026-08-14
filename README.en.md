@@ -1,8 +1,10 @@
-> 🤝 **A joint project by Jiamu × [Moyu Xiaoli (摸鱼小李)](https://mp.weixin.qq.com/s/EMahAzgfAbRQrYukWE7_IQ)** — the components, theme design and quality bar are shaped by both authors' hands-on WeChat publishing practice. Special thanks to Xiaoli.
+> **Starline enhanced fork**: maintained by 墨点星痕 (starline) at [`FreeCodeCampXYG/starline-gzh-design`](https://github.com/FreeCodeCampXYG/starline-gzh-design), based on `isjiamu/gzh-design-skill` and community pull requests.
+>
+> 🤝 **The upstream project is jointly built by Jiamu × [Moyu Xiaoli (摸鱼小李)](https://mp.weixin.qq.com/s/EMahAzgfAbRQrYukWE7_IQ)** — the components, theme design and quality bar are shaped by both authors' hands-on WeChat publishing practice. Special thanks to Xiaoli.
 
 <div align="center">
 
-# gzh-design-skill · WeChat Layout Skill
+# starline-gzh-design · WeChat Layout Skill
 
 **Turn Markdown into polished HTML you can paste straight into the WeChat editor**
 
@@ -93,15 +95,15 @@ Seven themes currently have repository gallery HTML; Klein Blue Art Editorial is
 
 ```bash
 # One-line install (recommended)
-npx skills add https://github.com/isjiamu/gzh-design-skill
+npx skills add https://github.com/FreeCodeCampXYG/starline-gzh-design
 
 # Or manual clone
-git clone https://github.com/isjiamu/gzh-design-skill.git ~/.claude/skills/gzh-design
+git clone https://github.com/FreeCodeCampXYG/starline-gzh-design.git ~/.claude/skills/starline-gzh-design
 ```
 
 Or just ask **any agent** (Claude Code / Codex / Cursor …):
 
-> Please find and install the skill at https://github.com/isjiamu/gzh-design-skill
+> Please find and install the skill at https://github.com/FreeCodeCampXYG/starline-gzh-design
 
 Then, once installed, tell your agent:
 
@@ -148,9 +150,9 @@ Source gate flags `white-space:pre` (blank bloat), full-border dashed frames in 
 ## 📁 Structure
 
 ```
-gzh-design/
+starline-gzh-design/
 ├── SKILL.md                 # layout workflow (agent entry)
-├── references/              # 7 theme libs + generator + shared lib + theme-index + eval-cases
+├── references/              # 8 theme libs + generator + shared lib + theme-index + eval-cases
 ├── scripts/                 # validate_gzh_html.py + component_lint.py
 ├── assets/                  # sample-article.md + theme-previews/
 └── docs/gallery/            # browser preview of themes
@@ -195,7 +197,7 @@ Give just a primary color or a vibe, and the generator derives the whole harmoni
 
 **Can it output several themes at once?** Yes — say "lay this out in each of these themes" for a batch to choose from.
 
-**How do I update?** Re-run `npx skills add https://github.com/isjiamu/gzh-design-skill`, or `git pull` in the install dir.
+**How do I update?** Re-run `npx skills add https://github.com/FreeCodeCampXYG/starline-gzh-design`, or `git pull` in the install dir.
 
 **What if the agent's output isn't compliant?** Run `scripts/validate_gzh_html.py`; fix on ERROR until both gates are green. Still stuck? Open an Issue.
 

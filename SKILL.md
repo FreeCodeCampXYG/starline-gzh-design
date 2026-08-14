@@ -1,6 +1,10 @@
 ---
-name: gzh-design
+name: starline-gzh-design
 description: 微信公众号文章排版引擎，将 Markdown 转换为可直接粘贴到公众号编辑器的 HTML，并支持 API 直传公众号草稿箱、本地图片上传图床换公网 URL。主题风格从 references/theme-index.md 注册的自定义主题库中选取，自动章节编号、关键词下划线标记、引言卡片、目录导航、代码块、图片/GIF、作者签名。支持 Markdown / Word(.docx) / PDF / 纯文本输入（非 Markdown 先自动归一化），也支持"一键自动排版"（自动推断结构+选主题+可选 API 上传草稿箱），还支持根据用户描述/参考图生成自定义主题组件库并保存本地复用，以及把本地图片自动上传图床（七牛等）换成公网 URL（解决本地图粘不进公众号），支持"先标注再排版"的两阶段模式（产出可检查、可修正、可重渲染的标注版 Markdown）。触发场景：(1) 用户提到"公众号排版""公众号文章""微信排版""gzh"，(2) 用户想把文章（md/docx/pdf/纯文本）转成公众号 HTML，(3) 用户说"自动排版""一键排版"公众号内容，(4) 用户想为公众号排版"生成新主题/自定义风格/按这张图做一套组件库"，(5) 用户想把排版 HTML 上传为微信公众号草稿，(6) 用户说"先标注""两步排版""标注后再排"进入两阶段模式。不用于生成普通网页/落地页/PPT（用前端或 PPT 类 skill）。
+metadata:
+  author: "墨点星痕 (starline)"
+  version: "1.0.0"
+  upstream_inspiration: "isjiamu/gzh-design-skill and community pull requests"
 ---
 
 # 公众号文章排版 Skill

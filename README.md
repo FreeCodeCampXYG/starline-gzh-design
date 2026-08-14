@@ -1,8 +1,10 @@
-> 🤝 **本项目由 甲木 × [「摸鱼小李」](https://mp.weixin.qq.com/s/EMahAzgfAbRQrYukWE7_IQ) 联名共建** —— 排版组件、主题设计与质量标准凝聚了两人的公众号实践与共同打磨，特别感谢小李。
+> **Starline 增强版**：由墨点星痕（starline）维护，仓库为 [`FreeCodeCampXYG/starline-gzh-design`](https://github.com/FreeCodeCampXYG/starline-gzh-design)。基于 `isjiamu/gzh-design-skill` 及社区 PR 合并增强。
+>
+> 🤝 **上游项目由 甲木 × [「摸鱼小李」](https://mp.weixin.qq.com/s/EMahAzgfAbRQrYukWE7_IQ) 联名共建** —— 排版组件、主题设计与质量标准凝聚了两人的公众号实践与共同打磨，特别感谢小李。
 
 <div align="center">
 
-# gzh-design-skill · 公众号排版技能
+# starline-gzh-design · 公众号排版技能
 
 **把 Markdown 一键排成可直接粘贴进微信公众号编辑器的精致 HTML**
 
@@ -21,6 +23,37 @@
 ---
 
 一个给 AI Agent（Claude Code / Codex / Cursor 等）用的公众号排版 Skill。你写完 Markdown，它按你选的主题，生成**样式全内联、粘贴到公众号编辑器不掉格式**的 HTML——自动编章节号、标关键词下划线、配引言卡与目录、处理代码块和图片、合并作者签名，并用脚本确定性地兜住公众号平台的各种限制。
+
+## 🧭 Starline 增强说明
+
+这个版本不是另起炉灶，而是在上游 [isjiamu/gzh-design-skill](https://github.com/isjiamu/gzh-design-skill) 的基础上整理为 `starline-gzh-design`，便于在 Starline 的 `.agents` 目录中独立维护、验证和发布。
+
+当前 Starline 版本已整理的修改包括：
+
+- 合并公众号草稿 API 上传、HTML 压缩和本地图片图床上传能力。
+- 合并 Markdown 超链接转文末参考资料、`--annotate` 两阶段标注、公众号背景色兜底校验等修复。
+- 合并克莱因蓝、科技钴蓝主题，以及 DOCX 转换时转义竖线导致的表格列错位修复。
+- 补充 `manifest.json`、`agents/interface.yaml` 和 Starline 包名、作者、迁移来源等元数据。
+- 保留上游输出格式、主题索引和兼容配置路径；旧的 `~/.gzh-design` 图片缓存/配置路径不会因为改名被无故改变。
+
+### 增强版本验证
+
+在本目录执行以下命令，可以复核脚本、组件库和最终 HTML：
+
+```bash
+python -m compileall -q scripts
+python scripts/component_lint.py .
+python scripts/validate_gzh_html.py <生成的.html>
+python C:/Users/<用户名>/.agents/skills/starline-meta-skill/scripts/validate_skill.py .
+```
+
+其中组件源文件应为 `0 ERROR`，最终 HTML 应为 `0 ERROR、半角标点 0 WARN`。Issue 或 Pull Request 请附上实际命令和结果，不要只写“已测试”。
+
+### 当前边界
+
+- 这是一个公众号排版 Skill，不负责代写文章，也不替代普通网页、PPT 或海报设计工具。
+- 当前主题索引登记 8 套主题，其中 7 套已有本地画廊 HTML，克莱因蓝主题暂未提供对应画廊文件。
+- Issue、Pull Request、分支合并和 Release 发布均需人工确认，不执行无审查的远端覆盖。
 
 ## ✨ 核心特性
 
@@ -100,26 +133,36 @@
 ### 方式一：一行安装（推荐）
 
 ```bash
-npx skills add https://github.com/isjiamu/gzh-design-skill
+npx skills add https://github.com/FreeCodeCampXYG/starline-gzh-design
 ```
 
 ### 方式二：让 AI 自己装
 
 对**任意 Agent**（Claude Code / Codex / Cursor 等）说一句：
 
-> 请帮我查找并自动安装 https://github.com/isjiamu/gzh-design-skill 这个 skill
+> 请帮我查找并自动安装 https://github.com/FreeCodeCampXYG/starline-gzh-design 这个 skill
 
 它会自行 clone 到对应的 skills 目录并接入。
 
 ### 方式三：手动 clone
 
 ```bash
-git clone https://github.com/isjiamu/gzh-design-skill.git ~/.claude/skills/gzh-design
+git clone https://github.com/FreeCodeCampXYG/starline-gzh-design.git ~/.claude/skills/starline-gzh-design
 ```
 
 装好后，直接对 Agent 说：
 
 > 用摸鱼绿把这篇文章排成公众号 HTML：`article.md`
+
+### 你可以直接这样说
+
+> 用科技钴蓝主题排版 `article.md`，先生成可检查的标注版，再输出可粘贴到公众号编辑器的 HTML。
+
+> 把 `draft.docx` 归一化为 Markdown，用石墨极简主题排版，并校验最终 HTML；发现 ERROR 时先修复再交付。
+
+> 将文章中的本地图片上传到已配置的图床，替换为公网 URL 后，用摸鱼绿主题生成公众号预览页。
+
+> 只检查 `output.html` 是否符合公众号限制，不改文章内容；列出具体错误和对应位置。
 
 ## 💬 交流群
 
@@ -230,7 +273,7 @@ python3 scripts/validate_gzh_html.py out.html  # 产物关：扫最终 HTML 合�
 ## 📁 目录结构
 
 ```
-gzh-design/
+starline-gzh-design/
 ├── SKILL.md                    # 排版工作流主文档（Agent 入口）
 ├── references/
 │   ├── theme-index.md          # 8 套主题索引（主色/适用/下划线，单一来源）
@@ -321,10 +364,20 @@ A：不挑模型，**国内外模型都能跑出一致效果**。排版逻辑全
 A：能。说「用这几套主题各排一遍这篇」即可批量生成多套供你挑。
 
 **Q：怎么更新到最新版？**
-A：重新跑 `npx skills add https://github.com/isjiamu/gzh-design-skill`，或到安装目录 `git pull`。
+A：重新跑 `npx skills add https://github.com/FreeCodeCampXYG/starline-gzh-design`，或到安装目录 `git pull`。
 
 **Q：Agent 写出来不合规怎么办？**
 A：跑 `scripts/validate_gzh_html.py`，报 ERROR 就回到装配步骤修；两关全绿才交付，仍有问题欢迎开 Issue。
+
+### Troubleshooting · 故障排查
+
+| 现象 | 先检查什么 | 建议处理 |
+|---|---|---|
+| PowerShell 中文显示乱码 | 控制台编码与文件编码是否混用 | 控制台可按需使用 GBK 显示，但 Markdown、YAML、JSON、Python 和 HTML 文件读写必须显式使用 UTF-8；不要把乱码复制回文件 |
+| 粘贴到公众号后样式丢失 | 是否出现 `<style>`、`class`、`div` 或平台禁用 CSS | 运行 `python scripts/validate_gzh_html.py <产物>`，按 ERROR 修复后重新粘贴 |
+| 代码块出现大面积空白 | 主题是否使用 `white-space: pre` | 运行 `python scripts/component_lint.py .`，改为每行一个 `<p>` 的结构 |
+| 本地图片粘贴后不可见 | 图片地址是否仍是本地路径 | 先使用 `scripts/upload_image.py` 上传到已配置图床，再生成 HTML；不要在 Issue 中提交密钥 |
+| Word 表格列数错位 | 单元格中是否有转义竖线 `\|` | 使用当前版本重新归一化 DOCX；若仍能复现，附脱敏后的最小表格提交 Bug Issue |
 
 ## 📋 完整主题速查表
 
@@ -355,7 +408,7 @@ A：跑 `scripts/validate_gzh_html.py`，报 ERROR 就回到装配步骤修；�
 
 ## 🤝 贡献
 
-欢迎新主题、修复与文档改进，请先读 [CONTRIBUTING.md](CONTRIBUTING.md)。
+欢迎新主题、修复与文档改进，请先读 [CONTRIBUTING.md](CONTRIBUTING.md)。提交问题时优先使用 `.github/ISSUE_TEMPLATE/` 中的模板；提交 Pull Request 时请保留复现输入、验证结果、关联 Issue 和兼容性说明。
 
 ## 📄 License
 
