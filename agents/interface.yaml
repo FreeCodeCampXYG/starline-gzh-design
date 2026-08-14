@@ -1,0 +1,37 @@
+interface:
+  display_name: "Starline GZH Design"
+  author: "墨点星痕 (starline)"
+  short_description: "把 Markdown、Word、PDF 或纯文本排成可直接粘贴到微信公众号的内联 HTML"
+  default_prompt: "Use $starline-gzh-design to convert my article into paste-ready WeChat HTML. Select one registered theme, preserve the source content, upload local images before layout when configured, convert external Markdown links to footnotes, validate the final HTML to zero errors and warnings, and generate a browser preview for manual copy. Use the two-stage annotated workflow only when I request annotation before rendering."
+  examples:
+    - "用 starline-gzh-design 把这篇 Markdown 排成公众号 HTML"
+    - "直接用科技钴蓝主题一键排版这篇文章"
+    - "先标注再排版，确认后生成公众号 HTML"
+    - "把本地图片上传图床后排版，并生成可复制预览页"
+compatibility:
+  canonical_format: "agent-skills"
+  adapter_targets:
+    - "openai"
+    - "claude"
+    - "generic"
+    - "agent-skills-compatible"
+  activation:
+    mode: "manual-or-description"
+    paths: []
+  execution:
+    context: "inline"
+    shell: "powershell-or-bash"
+  trust:
+    source_tier: "local-enhanced-upstream"
+    remote_inline_execution: "forbid"
+    generated_public_claims: "evidence-bound"
+  permissions:
+    network: "optional image-host upload and WeChat draft API only when configured and requested"
+    file_write: "article HTML, preview files, annotated Markdown, and local upload cache"
+    subprocess: "bundled Python normalization, upload, validation, minification, and preview scripts"
+    interactive: "theme confirmation unless the user requests automatic layout"
+  degradation:
+    openai: "canonical-source"
+    claude: "canonical-source"
+    generic: "instruction-compatible"
+    agent-skills-compatible: "canonical-source"

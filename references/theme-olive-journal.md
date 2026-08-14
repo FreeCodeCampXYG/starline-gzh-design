@@ -85,7 +85,7 @@
         </section>
         <p style="font-size:13px;color:#65675e;margin:0;line-height:1.7;"><span leaf="">{{副标题说明}}</span></p>
       </section>
-      <section style="flex-shrink:0;width:112px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#eeefe9;border:1px dashed #bfc1b7;border-radius:6px;padding:8px;">
+      <section style="flex-shrink:0;width:112px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#eeefe9;border:1px dashed #bfc1b7;text-align:center;border-radius:6px;padding:8px;">
         <svg width="72" height="72" viewBox="0 0 64 64" aria-hidden="true" style="display:block;">
           <ellipse cx="32" cy="36" rx="22" ry="18" fill="none" stroke="#4d4f46" stroke-width="2"></ellipse>
           <circle cx="26" cy="30" r="3" fill="#4d4f46"></circle>
@@ -966,6 +966,7 @@
 | 表格 | 组件22 精简对照表（≥2列数据对照）/ 组件21 对比摘要卡（二元对比） | 不用 `table`/`grid`，flex 仿表格 |
 | `![说明](图片)` | 组件19 图片卡 | 有说明才加 `<figcaption>` |
 | `![](图片)` 无说明/通栏 | 组件18 通栏图片 | |
+| `[text](url)` 超链接 | 通用库 4a 上标角标 + 4b 参考资料列表 | 正文 `text` + `[n]`（套本主题橙色 `#ed7b2f`），文末作者签名条33前生成对应参考资料列表 |
 | `---` 分割线 | 组件16 分割线（正式）/ 组件17 分割点（轻松） | |
 | `> 引用`（非开头） | 组件14 编者按 / 组件15 重点观点卡 | 视语气选择 |
 | 案例/示例展开 | 组件26 案例时间线 | |
