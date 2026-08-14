@@ -164,14 +164,6 @@ git clone https://github.com/FreeCodeCampXYG/starline-gzh-design.git ~/.claude/s
 
 > 只检查 `output.html` 是否符合公众号限制，不改文章内容；列出具体错误和对应位置。
 
-## 💬 交流群
-
-扫码加入**官方企业微信交流群**（活码自动邀请入群，一起交流公众号排版 & Agent Skills 玩法）：
-
-<img src="https://github.com/isjiamu/gzh-design-skill/releases/download/assets-v1/group-qr.png" width="220" alt="企业微信交流群二维码">
-
-> 扫码失效？加作者微信 **`zuiyn_soul`**（备注「gzh-design」）拉你进群。
-
 ## 📖 使用流程
 
 1. **选主题** — 按题材自动推荐最契合的主题并请你一步确认（默认摸鱼绿）；也可直接指定，或让 AI 生成新主题。
@@ -398,11 +390,11 @@ A：跑 `scripts/validate_gzh_html.py`，报 ERROR 就回到装配步骤修；�
 
 如果这个项目帮到了你，点个 Star 支持一下～
 
-<a href="https://www.star-history.com/?repos=isjiamu%2Fgzh-design-skill&type=date&legend=top-left">
+<a href="https://www.star-history.com/?repos=FreeCodeCampXYG%2Fstarline-gzh-design&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=isjiamu/gzh-design-skill&type=date&theme=dark&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=isjiamu/gzh-design-skill&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=isjiamu/gzh-design-skill&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=FreeCodeCampXYG/starline-gzh-design&type=date&theme=dark&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=FreeCodeCampXYG/starline-gzh-design&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=FreeCodeCampXYG/starline-gzh-design&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
  </picture>
 </a>
 
@@ -412,7 +404,7 @@ A：跑 `scripts/validate_gzh_html.py`，报 ERROR 就回到装配步骤修；�
 
 ## 📄 License
 
-**AGPL-3.0 © 2026 甲木 × 摸鱼小李**
+**AGPL-3.0 © 2026 Starline（墨点星痕）**
 
 本项目采用 **GNU AGPL-3.0** 协议，要点：
 
@@ -423,19 +415,11 @@ A：跑 `scripts/validate_gzh_html.py`，报 ERROR 就回到装配步骤修；�
 
 完整条款见 [LICENSE](LICENSE)。
 
-> 🤝 **欢迎 AI Agent 厂商、模型厂商共创**：想把 gzh-design 集成进产品、或基于它做深度共建，我们很欢迎——共创协议请联系甲木。
+> 🤝 **欢迎 AI Agent 厂商、模型厂商共创**：想把 gzh-design 集成进产品、或基于它做深度共建，我们很欢迎——共创协议请联系 Starline（墨点星痕）。
 
 ## 🙏 致谢
 
-- 本项目由 **甲木 × 摸鱼小李** 联名共建：核心组件库与主题设计标准凝聚了两人的公众号排版实践。
+- 本项目由 **Starline（墨点星痕）** 维护与增强：上游组件库与主题设计标准由 甲木 × 摸鱼小李 联名共建。
 - 质量工程（可验证循环）由 skill-optimizer 审计驱动打磨。
 
 ---
-
-<div align="center">
-
-<img src="https://origin.picgo.net/2026/07/07/22e8d28de5f71eee085939b2f4c1f19548b19a67a79bdb68.png" width="600" alt="甲木 × 摸鱼小李 公众号名片">
-
-<sub>关注我们的公众号，获取更多 AI 干货与排版实践 👆</sub>
-
-</div>
