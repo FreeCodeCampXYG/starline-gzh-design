@@ -5,8 +5,8 @@
 ## 项目结构速览
 
 - `SKILL.md` — 排版工作流主文档（Agent 入口）
-- `references/` — 6 套主题组件库 + 通用增量库 + 主题索引 + 主题生成器 + 触发用例
-- `scripts/` — 校验脚本（`component_lint.py` / `validate_gzh_html.py`）+ 可选上传脚本（`wechat_draft.py`）
+- `references/` — 8 套主题组件库 + 通用增量库 + 主题索引 + 主题生成器 + 触发用例
+- `scripts/` — 校验、HTML 压缩、公众号草稿上传和本地图片图床上传脚本
 - `assets/` — 演示输入文章
 - `docs/gallery/` — 主题风格的浏览器预览
 
