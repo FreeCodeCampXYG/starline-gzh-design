@@ -6,11 +6,11 @@
 
 **把 Markdown 一键排成可直接粘贴进微信公众号编辑器的精致 HTML**
 
-7 套精选主题 + 主题生成器 · 代码块/图片/GIF · 自动章节编号与关键词标记 · 双关卡质量校验
+8 套精选主题 + 主题生成器 · 代码块/图片/GIF · 自动章节编号与关键词标记 · 双关卡质量校验
 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blue)](https://claude.ai/code)
-[![Themes](https://img.shields.io/badge/themes-7%20+%20generator-1D4ED8)](references/theme-index.md)
+[![Themes](https://img.shields.io/badge/themes-8%20+%20generator-1D4ED8)](references/theme-index.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Agents](https://img.shields.io/badge/Claude%20Code%20·%20Codex%20·%20Cursor-supported-8b5cf6.svg)](#-快速开始)
 
@@ -24,7 +24,7 @@
 
 ## ✨ 核心特性
 
-- **7 套精选主题**：摸鱼绿（默认）· 科技钴蓝 · 红白 · 石墨极简 · 留白禅意 · 摸鱼票据 · 橄榄手记 —— 每套都是自成体系的厚组件库（设计变量 + 数十个精细组件 + 视觉层级表 + 文章类型配方表）。
+- **8 套精选主题**：摸鱼绿（默认）· 科技钴蓝 · 克莱因蓝艺术展册 · 红白 · 石墨极简 · 留白禅意 · 摸鱼票据 · 橄榄手记 —— 每套都是自成体系的厚组件库（设计变量 + 数十个精细组件 + 视觉层级表 + 文章类型配方表）。
 - **主题生成器**：不满足现成主题？用一句话描述或一张参考图，生成一套全新组件库并保存本地复用（见 `references/theme-generator.md`）。
 - **内容全兼容**：代码块（深/浅色，等宽不折行）、图片、GIF（带动图角标）、行内代码、引用、列表、产品徽章、Markdown 超链接（自动转上标脚注 + 文末「参考资料」列表）。
 - **智能排版**：章节自动编号（末章 ∞ / ///）、每段主动标 1–3 个关键词下划线、从正文提炼引言卡与目录、作者签名去重合并。
@@ -35,7 +35,7 @@
 
 ## 👀 效果预览
 
-7 套主题各排同一篇长文（真实长图与交互预览，含配图、引言卡、编号章节、金句、名词旁注等完整组件）：
+已提供 7 套主题的同文长图与交互预览；另有 1 套已注册主题（克莱因蓝艺术展册）暂未随 PR 提供仓库内画廊 HTML：
 
 <table>
 <tr>
@@ -57,7 +57,7 @@
 </tr>
 </table>
 
-> 📚 **7 套主题预览 → [docs/all-themes.md](docs/all-themes.md)**　｜　克隆后浏览器打开 `docs/gallery/index.html` 可看可交互的完整 HTML。
+> 📚 **主题预览 → [docs/all-themes.md](docs/all-themes.md)**　｜　克隆后浏览器打开 `docs/gallery/index.html` 可看 7 套本地交互 HTML；完整主题清单见 `references/theme-index.md`。
 
 ## ✅ 适合 / ❌ 不适合
 
@@ -78,7 +78,7 @@
 | Word / PDF 稿转公众号 | 先自动格式归一化 → 再按题材选主题 |
 | 想要现成之外的风格 | 主题生成器：一句话或参考图现造一套 |
 
-## 🎨 7 套精选主题
+## 🎨 8 套精选主题
 
 覆盖绝大多数公众号题材，每套都打磨到「拿来即用」：
 
@@ -86,6 +86,7 @@
 |---|---|
 | **摸鱼绿**（默认） | 教程、测评、清单、工具盘点（卡片丰富、信息密度高） |
 | **科技钴蓝** | AI 工具、开发教程、产品说明、工作流指南（冷静清晰、黄蓝对比） |
+| **克莱因蓝艺术展册** | 艺术评论、品牌叙事、深度观点、人物特稿（高纯度蓝色锚点、展册式结构） |
 | **红白色系** | 深度分析、观点、力量感话题（经典编辑风） |
 | **石墨极简风** | 设计、科技评论、专业观点、高端品牌 |
 | **留白禅意风** | 禅意、极简生活、深度随笔（呼吸感最强） |
@@ -232,8 +233,8 @@ python3 scripts/validate_gzh_html.py out.html  # 产物关：扫最终 HTML 合�
 gzh-design/
 ├── SKILL.md                    # 排版工作流主文档（Agent 入口）
 ├── references/
-│   ├── theme-index.md          # 7 套主题索引（主色/适用/下划线，单一来源）
-│   ├── theme-*.md              # 7 套主题组件库（theme-moyu-green.md 等）
+│   ├── theme-index.md          # 8 套主题索引（主色/适用/下划线，单一来源）
+│   ├── theme-*.md              # 8 套主题组件库（theme-moyu-green.md 等）
 │   ├── theme-generator.md      # 主题生成器（按描述/参考图生成新主题）
 │   ├── common-components.md    # 跨主题通用增量组件（代码块/图片/小标签）
 │   ├── format-normalize.md     # 格式归一化（docx/pdf/纯文本 → Markdown）
@@ -257,11 +258,11 @@ gzh-design/
 - **克制用色** — 主色只在锚点出现（全文 ≤5 处），大面积白底 + 灰阶，彩色只做点缀。
 - **灰阶承重** — 约 90% 的文字交给一套中性灰阶，色彩不承担正文阅读，避免花哨。
 
-## 🧠 方法论：不止 7 套，自己造主题
+## 🧠 方法论：不止 8 套，自己造主题
 
 ### 主题生成：一句话 / 一张参考图，现造一套新主题
 
-内置 7 套不够用时不必等更新——让 AI 现造一套。背后是 [`references/theme-generator.md`](references/theme-generator.md) 定义的第二条工作流：
+内置 8 套不够用时不必等更新——让 AI 现造一套。背后是 [`references/theme-generator.md`](references/theme-generator.md) 定义的第二条工作流：
 
 1. **收集偏好**（一次问全，不逐条追问）：主题描述必填（或给参考图），名称 / 主色 / 背景 / 正文色 / 强调色 / 装饰色 / 字体 / 圆角 / 阴影 / 适用场景可留空自动补全。
 2. **生成区块库**：AI 产出 45~75 个区块的完整 HTML 组件库，存到 `assets/theme-previews/{id}.html`，浏览器整页一次浏览确认风格（不逐块问）。
