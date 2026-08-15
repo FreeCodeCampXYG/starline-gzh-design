@@ -8,11 +8,11 @@
 
 **Turn Markdown into polished HTML you can paste straight into the WeChat editor**
 
-8 curated themes + theme generator · code blocks / images / GIFs · auto section numbers & keyword marks · two-gate quality checks
+9 curated themes + theme generator · code blocks / images / GIFs · auto section numbers & keyword marks · two-gate quality checks
 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blue)](https://claude.ai/code)
-[![Themes](https://img.shields.io/badge/themes-8%20+%20generator-1D4ED8)](references/theme-index.md)
+[![Themes](https://img.shields.io/badge/themes-9%20+%20generator-1D4ED8)](references/theme-index.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Agents](https://img.shields.io/badge/Claude%20Code%20·%20Codex%20·%20Cursor-supported-8b5cf6.svg)](#-quick-start)
 
@@ -22,16 +22,17 @@ English ｜ [中文](README.md)
 
 ---
 
-A layout Skill for AI agents (Claude Code / Codex / Cursor …). You write Markdown; it renders HTML with **fully inlined styles that survive pasting into the WeChat editor** — auto section numbers, keyword underlines, intro cards, code blocks, images, merged author signature — with scripts that deterministically enforce WeChat's platform limits.
+A layout Skill for AI agents (Claude Code / Codex / Cursor …). You write Markdown; it first identifies the reader's real job, then renders **fully inlined, paste-oriented WeChat HTML** — auto section numbers, keyword underlines, intro cards, code blocks, images, merged author signature — with scripts that deterministically block common platform risks.
 
 ## ✨ Features
 
-- **8 curated themes**: Moyu Green (default) · Tech Cobalt · Klein Blue Art Editorial · Red & White · Graphite Minimal · Zen Whitespace · Moyu Ticket · Olive Journal — each a self-contained thick component library (design tokens + dozens of components + visual-hierarchy table + article-type recipe table).
+- **9 curated themes**: Moyu Green (default) · Tech Cobalt · Klein Blue Art Editorial · Red & White · Graphite Minimal · Apple Open Course · Zen Whitespace · Moyu Ticket · Olive Journal — each a self-contained component library (design tokens + components + visual-hierarchy table + article-type recipe table).
 - **Theme generator**: none fit? Describe a style in one line or drop a reference image, and generate a fresh component library saved for reuse (see `references/theme-generator.md`).
+- **Hierarchy-first layout**: the reader's job, action, and outcome lead; frameworks such as 80/20, STAR, or a quadrant stay secondary unless the article is explicitly about them.
 - **Full content support**: code blocks (dark/light, monospace), images, GIFs (with an animated badge), inline code, quotes, lists, product badges, Markdown hyperlinks (auto-converted to superscript footnotes + an end-of-article "References" list).
 - **Smart layout**: auto section numbering (last chapter ∞ / ///), 1–3 keyword underlines per paragraph, intro card & TOC distilled from the body, de-duplicated signature.
 - **Full-width CJK punctuation** in prose; kept as-is inside code blocks.
-- **Paste-safe**: all styles inlined, every text node wrapped in `<span leaf="">`, avoiding `<style>/<div>/class/grid/position` that WeChat strips.
+- **Paste-compatibility guardrails**: all styles inlined, every text node wrapped in `<span leaf="">`, and layout-critical 50% columns rejected; the real WeChat paste remains the final check.
 - **Two-gate quality checks**: `component_lint.py` (library source) + `validate_gzh_html.py` (final output) form a reproducible edit → verify → fix loop.
 - **One-click copy**: a preview page with a **Copy** button — click to copy the rich text and paste straight into WeChat, no manual select-all.
 
@@ -56,7 +57,7 @@ A layout Skill for AI agents (Claude Code / Codex / Cursor …). You write Markd
 
 ## 🎨 8 Curated Themes
 
-Seven themes currently have repository gallery HTML; Klein Blue Art Editorial is registered but PR #7 did not include a local gallery file:
+Seven themes currently have repository gallery HTML; Klein Blue Art Editorial and Apple Open Course are registered but do not yet have local gallery files:
 
 <table>
 <tr>
@@ -109,18 +110,27 @@ Then, once installed, tell your agent:
 
 > Lay out `article.md` as WeChat HTML using the Moyu Green theme.
 
+## 💬 Community
+
+Scan to join the **official WeChat Work group** (dynamic QR, auto-invite) — chat about WeChat layout & Agent Skills:
+
+<img src="https://github.com/isjiamu/gzh-design-skill/releases/download/assets-v1/group-qr.png" width="220" alt="WeChat Work group QR">
+
+> QR expired? Add WeChat **`zuiyn_soul`** (note "gzh-design") to get invited.
+
 ## 📖 Workflow
 
-1. **Pick a theme** — auto-suggests the best fit by topic and asks you to confirm (defaults to Moyu Green); or specify one, or generate a new one.
-2. **Load libraries** — the chosen theme lib + the shared incremental lib (code/image/label).
-3. **Parse Markdown** — headings, chapters, bold, highlight, quotes, images, code, lists.
-4. **Assemble HTML** — from real components; apply numbering, underlines, full-width punctuation, signature.
-5. **Validate** — run `validate_gzh_html.py`, ship only at 0 ERROR.
-6. **Output** — a clean fragment + a preview page with a **Copy** button; open it, click "Copy to WeChat", then paste into the editor (no manual select-all).
+1. **Calibrate hierarchy** — identify the reader job, one outcome, core path, and supporting frameworks.
+2. **Pick a theme** — auto-suggests the best fit by topic and asks you to confirm (defaults to Moyu Green); or specify one, or generate a new one.
+3. **Load libraries** — the chosen theme lib + the shared incremental lib (code/image/label).
+4. **Parse Markdown** — headings, chapters, bold, highlight, quotes, images, code, lists.
+5. **Assemble HTML** — from real components; apply numbering, underlines, full-width punctuation, signature, and full-width critical structures.
+6. **Validate** — run `validate_gzh_html.py`, ship only at 0 ERROR.
+7. **Output** — a clean fragment + a preview page with a **Copy** button; open it, click "Copy to WeChat", then paste into the editor (no manual select-all).
 
 ## 🧩 Platform limits (enforced)
 
-Output obeys: no `<style>/<script>/<div>`, no `class/id`, no `position:fixed/absolute/sticky`, `float`, `@media/@keyframes`, `display:grid`, CSS variables, external fonts; all styles inlined; every text node wrapped in `<span leaf="">`. Checked deterministically by scripts, not by model discipline.
+Output obeys: no `<style>/<script>/<div>`, no `class/id`, no `position:fixed/absolute/sticky`, `float`, `@media/@keyframes`, `display:grid`, `width:50%`, `flex-basis:50%`, CSS variables, external fonts; all styles inlined; every text node wrapped in `<span leaf="">`. Checked deterministically by scripts, not by model discipline.
 
 ## 🔁 Verifiable loop
 
@@ -134,7 +144,7 @@ Source gate flags `white-space:pre` (blank bloat), full-border dashed frames in 
 ## 💡 Why it's built this way
 
 - **Constraint beats freedom** — preset palettes + fixed components lock in a quality floor instead of letting the model improvise each time.
-- **Paste-safe by design** — fully inlined styles + every text node in `<span leaf="">`, avoiding exactly what the WeChat editor strips.
+- **Paste compatibility by design** — fully inlined styles, every text node in `<span leaf="">`, and no layout-critical 50% columns; the real editor paste remains the final check.
 - **Quality by script, not discipline** — two gates (`component_lint` at source + `validate_gzh_html` on output) deterministically check platform rules and punctuation.
 - **Model-agnostic** — layout logic lives in libraries and scripts, not any one model's tricks; Claude / GPT / Gemini / Chinese models all produce the same result.
 - **Agent-friendly** — input and output are plain-text Markdown / HTML any agent can read, write, edit and verify — native to Claude Code / Codex / Cursor.
@@ -144,7 +154,7 @@ Source gate flags `white-space:pre` (blank bloat), full-border dashed frames in 
 ```
 starline-gzh-design/
 ├── SKILL.md                 # layout workflow (agent entry)
-├── references/              # 8 theme libs + generator + shared lib + theme-index + eval-cases
+├── references/              # 9 theme libs + generator + shared lib + theme-index + eval-cases
 ├── scripts/                 # validate_gzh_html.py + component_lint.py
 ├── assets/                  # sample-article.md + theme-previews/
 └── docs/gallery/            # browser preview of themes
@@ -183,7 +193,7 @@ Give just a primary color or a vibe, and the generator derives the whole harmoni
 
 ## ❓ FAQ
 
-**Will styles survive pasting into WeChat?** Yes — everything is inlined and every text node is `<span leaf="">`-wrapped, enforced by the validator.
+**Will styles survive pasting into WeChat?** The Skill blocks common failure patterns with inline styles, `<span leaf="">`, full-width critical structures, and validators. WeChat may still rewrite styles, so the real editor paste is the final evidence.
 
 **Can I add my own theme?** Two ways: (1) have the AI generate one via `references/theme-generator.md`; (2) hand-write one per `CONTRIBUTING.md` and open a PR.
 
@@ -197,19 +207,19 @@ Give just a primary color or a vibe, and the generator derives the whole harmoni
 
 If this project helps you, a Star means a lot 🙏
 
-<a href="https://www.star-history.com/?repos=FreeCodeCampXYG%2Fstarline-gzh-design&type=date&legend=top-left">
+<a href="https://www.star-history.com/?repos=isjiamu%2Fgzh-design-skill&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=FreeCodeCampXYG/starline-gzh-design&type=date&theme=dark&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=FreeCodeCampXYG/starline-gzh-design&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=FreeCodeCampXYG/starline-gzh-design&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=isjiamu/gzh-design-skill&type=date&theme=dark&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=isjiamu/gzh-design-skill&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=isjiamu/gzh-design-skill&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
  </picture>
 </a>
 
 ## 🤝 Contributing · 📄 License
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Maintained by **Starline (墨点星痕)** — the upstream component libraries and theme design standards were originally co-built by Jiamu × Moyu Xiaoli.
+See [CONTRIBUTING.md](CONTRIBUTING.md). Co-built by **Jiamu × Moyu Xiaoli** — the component libraries and theme design standards come from both authors' WeChat publishing practice.
 
-**AGPL-3.0 © 2026 Starline (墨点星痕).** Key terms:
+**AGPL-3.0 © 2026 Jiamu × Moyu Xiaoli.** Key terms:
 
 1. **Attribution required** — keep the copyright and co-author notice.
 2. **Derivatives must be open source** — any modified version, fork or redistribution must be released under AGPL-3.0 (or a compatible license) with full source.
@@ -218,4 +228,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Maintained by **Starline (墨点星痕)*
 
 Full terms in [LICENSE](LICENSE).
 
-> 🤝 **AI Agent & model vendors welcome to co-create**: want to integrate gzh-design into your product or deeply co-build on it? We'd love that — contact Starline for the co-creation agreement.
+> 🤝 **AI Agent & model vendors welcome to co-create**: want to integrate gzh-design into your product or deeply co-build on it? We'd love that — contact Jiamu for the co-creation agreement.

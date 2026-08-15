@@ -8,11 +8,11 @@
 
 **把 Markdown 一键排成可直接粘贴进微信公众号编辑器的精致 HTML**
 
-8 套精选主题 + 主题生成器 · 代码块/图片/GIF · 自动章节编号与关键词标记 · 双关卡质量校验
+9 套精选主题 + 主题生成器 · 代码块/图片/GIF · 自动章节编号与关键词标记 · 双关卡质量校验
 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blue)](https://claude.ai/code)
-[![Themes](https://img.shields.io/badge/themes-8%20+%20generator-1D4ED8)](references/theme-index.md)
+[![Themes](https://img.shields.io/badge/themes-9%20+%20generator-1D4ED8)](references/theme-index.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Agents](https://img.shields.io/badge/Claude%20Code%20·%20Codex%20·%20Cursor-supported-8b5cf6.svg)](#-快速开始)
 
@@ -22,7 +22,7 @@
 
 ---
 
-一个给 AI Agent（Claude Code / Codex / Cursor 等）用的公众号排版 Skill。你写完 Markdown，它按你选的主题，生成**样式全内联、粘贴到公众号编辑器不掉格式**的 HTML——自动编章节号、标关键词下划线、配引言卡与目录、处理代码块和图片、合并作者签名，并用脚本确定性地兜住公众号平台的各种限制。
+一个给 AI Agent（Claude Code / Codex / Cursor 等）用的公众号排版 Skill。你写完 Markdown，它先判断读者真正要完成什么，再按你选的主题生成**样式全内联、面向公众号粘贴兼容**的 HTML——自动编章节号、标关键词下划线、配引言卡与目录、处理代码块和图片、合并作者签名，并用脚本确定性地拦截常见平台风险。
 
 ## 🧭 Starline 增强说明
 
@@ -33,6 +33,7 @@
 - 合并公众号草稿 API 上传、HTML 压缩和本地图片图床上传能力。
 - 合并 Markdown 超链接转文末参考资料、`--annotate` 两阶段标注、公众号背景色兜底校验等修复。
 - 合并克莱因蓝、科技钴蓝主题，以及 DOCX 转换时转义竖线导致的表格列错位修复。
+- 新增内容主次校准：读者任务优先，二八、STAR、四象限等整理法则默认降为辅助说明；同时禁止会在微信剥离父级 flex 后留下半屏空白的 50% 半宽列。
 - 补充 `manifest.json`、`agents/interface.yaml` 和 Starline 包名、作者、迁移来源等元数据。
 - 保留上游输出格式、主题索引和兼容配置路径；旧的 `~/.gzh-design` 图片缓存/配置路径不会因为改名被无故改变。
 
@@ -52,23 +53,24 @@ python C:/Users/<用户名>/.agents/skills/starline-meta-skill/scripts/validate_
 ### 当前边界
 
 - 这是一个公众号排版 Skill，不负责代写文章，也不替代普通网页、PPT 或海报设计工具。
-- 当前主题索引登记 8 套主题，其中 7 套已有本地画廊 HTML，克莱因蓝主题暂未提供对应画廊文件。
+- 当前主题索引登记 9 套主题，其中 7 套已有本地画廊 HTML，克莱因蓝与苹果公开课风暂未提供对应画廊文件。
 - Issue、Pull Request、分支合并和 Release 发布均需人工确认，不执行无审查的远端覆盖。
 
 ## ✨ 核心特性
 
-- **8 套精选主题**：摸鱼绿（默认）· 科技钴蓝 · 克莱因蓝艺术展册 · 红白 · 石墨极简 · 留白禅意 · 摸鱼票据 · 橄榄手记 —— 每套都是自成体系的厚组件库（设计变量 + 数十个精细组件 + 视觉层级表 + 文章类型配方表）。
+- **9 套精选主题**：摸鱼绿（默认）· 科技钴蓝 · 克莱因蓝艺术展册 · 红白 · 石墨极简 · 苹果公开课 · 留白禅意 · 摸鱼票据 · 橄榄手记 —— 每套都是自成体系的组件库（设计变量 + 组件 + 视觉层级表 + 文章类型配方表）。
 - **主题生成器**：不满足现成主题？用一句话描述或一张参考图，生成一套全新组件库并保存本地复用（见 `references/theme-generator.md`）。
+- **内容主次校准**：先识别读者任务、唯一结果与核心路径，再选主题；整理法则只有在文章明确讲法则本身时才进入封面和主标题。
 - **内容全兼容**：代码块（深/浅色，等宽不折行）、图片、GIF（带动图角标）、行内代码、引用、列表、产品徽章、Markdown 超链接（自动转上标脚注 + 文末「参考资料」列表）。
 - **智能排版**：章节自动编号（末章 ∞ / ///）、每段主动标 1–3 个关键词下划线、从正文提炼引言卡与目录、作者签名去重合并。
 - **中文全角标点**：正文自动规范全角，代码块内原样保留。
-- **不掉格式**：所有样式内联、文字 `<span leaf="">` 包裹，规避 `<style>/<div>/class/grid/position` 等公众号会过滤的写法。
+- **粘贴兼容兜底**：所有样式内联、文字 `<span leaf="">` 包裹，并禁止 50% 半宽关键列；真实公众号粘贴结果仍是最终标准。
 - **双关卡质量校验**：`component_lint.py`（组件库源头）+ `validate_gzh_html.py`（最终产物），构成可复现的「改→验→修」闭环。
 - **一键复制**：生成带「复制」按钮的预览页，点一下把富文本复制到剪贴板，直接粘进公众号，免手动全选。
 
 ## 👀 效果预览
 
-已提供 7 套主题的同文长图与交互预览；另有 1 套已注册主题（克莱因蓝艺术展册）暂未随 PR 提供仓库内画廊 HTML：
+已提供 7 套主题的同文长图与交互预览；另有 2 套已注册主题（克莱因蓝艺术展册、苹果公开课风）暂未提供仓库内画廊 HTML：
 
 <table>
 <tr>
@@ -111,7 +113,7 @@ python C:/Users/<用户名>/.agents/skills/starline-meta-skill/scripts/validate_
 | Word / PDF 稿转公众号 | 先自动格式归一化 → 再按题材选主题 |
 | 想要现成之外的风格 | 主题生成器：一句话或参考图现造一套 |
 
-## 🎨 8 套精选主题
+## 🎨 9 套精选主题
 
 覆盖绝大多数公众号题材，每套都打磨到「拿来即用」：
 
@@ -122,6 +124,7 @@ python C:/Users/<用户名>/.agents/skills/starline-meta-skill/scripts/validate_
 | **克莱因蓝艺术展册** | 艺术评论、品牌叙事、深度观点、人物特稿（高纯度蓝色锚点、展册式结构） |
 | **红白色系** | 深度分析、观点、力量感话题（经典编辑风） |
 | **石墨极简风** | 设计、科技评论、专业观点、高端品牌 |
+| **苹果公开课风** | 方法论、公开课、知识框架、商业策略与教程 |
 | **留白禅意风** | 禅意、极简生活、深度随笔（呼吸感最强） |
 | **摸鱼票据风** | 工具对比、创意评测（票据视觉隐喻） |
 | **橄榄手记** | 内刊手记、深度评测、案例复盘（编辑部内刊质感） |
@@ -164,14 +167,23 @@ git clone https://github.com/FreeCodeCampXYG/starline-gzh-design.git ~/.claude/s
 
 > 只检查 `output.html` 是否符合公众号限制，不改文章内容；列出具体错误和对应位置。
 
+## 💬 交流群
+
+扫码加入**官方企业微信交流群**（活码自动邀请入群，一起交流公众号排版 & Agent Skills 玩法）：
+
+<img src="https://github.com/isjiamu/gzh-design-skill/releases/download/assets-v1/group-qr.png" width="220" alt="企业微信交流群二维码">
+
+> 扫码失效？加作者微信 **`zuiyn_soul`**（备注「gzh-design」）拉你进群。
+
 ## 📖 使用流程
 
-1. **选主题** — 按题材自动推荐最契合的主题并请你一步确认（默认摸鱼绿）；也可直接指定，或让 AI 生成新主题。
-2. **读组件库** — 读所选主题库 + 通用增量库（代码块/图片/小标签）。
-3. **解析 Markdown** — 识别标题、章节、加粗、高亮、引用、图片、代码块、列表、超链接。
-4. **装配 HTML** — 用组件库里的真实组件拼装，落实编号、下划线、全角、签名。
-5. **校验** — 跑 `validate_gzh_html.py`，ERROR 清零才交付。
-6. **输出** — 两条路线任选其一：
+1. **校准主次** — 先识别读者任务、唯一结果、核心路径和辅助法则，避免方法名压过正文主题。
+2. **选主题** — 按题材自动推荐最契合的主题并请你一步确认（默认摸鱼绿）；也可直接指定，或让 AI 生成新主题。
+3. **读组件库** — 读所选主题库 + 通用增量库（代码块/图片/小标签）。
+4. **解析 Markdown** — 识别标题、章节、加粗、高亮、引用、图片、代码块、列表、超链接。
+5. **装配 HTML** — 用组件库里的真实组件拼装，落实编号、下划线、全角、签名与全宽关键结构。
+6. **校验** — 跑 `validate_gzh_html.py`，ERROR 清零才交付。
+7. **输出** — 两条路线任选其一：
 
    **路线一 · 手动粘贴**（适合电脑端直接发布）
    生成预览页 → 浏览器打开 → 点右上角「复制」→ 公众号编辑器粘贴
@@ -239,7 +251,7 @@ cleanup_draft_nbsp(token, media_id)
 
 ## 🧩 公众号平台限制（已内置兜底）
 
-生成的 HTML 严格遵守：禁 `<style>/<script>/<div>`、`class/id`、`position:fixed/absolute/sticky`、`float`、`@media/@keyframes`、`display:grid`、CSS 变量、外部字体；样式全部内联；所有文字用 `<span leaf="">` 包裹。这些由校验脚本确定性检查，而非靠模型自觉。
+生成的 HTML 严格遵守：禁 `<style>/<script>/<div>`、`class/id`、`position:fixed/absolute/sticky`、`float`、`@media/@keyframes`、`display:grid`、`width:50%`、`flex-basis:50%`、CSS 变量、外部字体；样式全部内联；所有文字用 `<span leaf="">` 包裹。这些由校验脚本确定性检查，而非靠模型自觉。
 
 ## 🔁 可验证循环
 
@@ -257,6 +269,7 @@ python3 scripts/validate_gzh_html.py out.html  # 产物关：扫最终 HTML 合�
 ## 💡 为什么这么设计
 
 - **约束优于自由** — 预设主题色板 + 固定组件先保住输出下限，不让模型每次现场发挥、风格飘忽。
+- **读者任务优于整理法则** — 封面和主标题先回答“具体怎么做”，二八、STAR、四象限等只有在本身是主题时才进入主层级。
 - **样式粘贴不掉** — 全内联样式 + 每个文字节点 `<span leaf="">` 包裹，专门规避公众号会过滤的写法，粘进去不塌。
 - **质量靠脚本不靠自觉** — 双关卡（源头 `component_lint` + 产物 `validate_gzh_html`）确定性检查平台红线和标点，不靠模型「记得住」。
 - **换模型不走样** — 排版逻辑全沉淀在组件库和脚本里，不依赖某家模型，Claude / GPT / Gemini / 国产模型都能跑出一致效果。
@@ -268,8 +281,8 @@ python3 scripts/validate_gzh_html.py out.html  # 产物关：扫最终 HTML 合�
 starline-gzh-design/
 ├── SKILL.md                    # 排版工作流主文档（Agent 入口）
 ├── references/
-│   ├── theme-index.md          # 8 套主题索引（主色/适用/下划线，单一来源）
-│   ├── theme-*.md              # 8 套主题组件库（theme-moyu-green.md 等）
+│   ├── theme-index.md          # 9 套主题索引（主色/适用/下划线，单一来源）
+│   ├── theme-*.md              # 9 套主题组件库（theme-moyu-green.md 等）
 │   ├── theme-generator.md      # 主题生成器（按描述/参考图生成新主题）
 │   ├── common-components.md    # 跨主题通用增量组件（代码块/图片/小标签）
 │   ├── format-normalize.md     # 格式归一化（docx/pdf/纯文本 → Markdown）
@@ -293,11 +306,11 @@ starline-gzh-design/
 - **克制用色** — 主色只在锚点出现（全文 ≤5 处），大面积白底 + 灰阶，彩色只做点缀。
 - **灰阶承重** — 约 90% 的文字交给一套中性灰阶，色彩不承担正文阅读，避免花哨。
 
-## 🧠 方法论：不止 8 套，自己造主题
+## 🧠 方法论：不止 9 套，自己造主题
 
 ### 主题生成：一句话 / 一张参考图，现造一套新主题
 
-内置 8 套不够用时不必等更新——让 AI 现造一套。背后是 [`references/theme-generator.md`](references/theme-generator.md) 定义的第二条工作流：
+内置 9 套不够用时不必等更新——让 AI 现造一套。背后是 [`references/theme-generator.md`](references/theme-generator.md) 定义的第二条工作流：
 
 1. **收集偏好**（一次问全，不逐条追问）：主题描述必填（或给参考图），名称 / 主色 / 背景 / 正文色 / 强调色 / 装饰色 / 字体 / 圆角 / 阴影 / 适用场景可留空自动补全。
 2. **生成区块库**：AI 产出 45~75 个区块的完整 HTML 组件库，存到 `assets/theme-previews/{id}.html`，浏览器整页一次浏览确认风格（不逐块问）。
@@ -341,7 +354,7 @@ starline-gzh-design/
 ## ❓ FAQ
 
 **Q：粘贴到公众号后样式会掉吗？**
-A：不会。所有样式内联、文字 `<span leaf="">` 包裹，这正是校验脚本强制的重点。
+A：Skill 会用内联样式、`<span leaf="">`、全宽关键结构和校验脚本降低常见风险，但微信编辑器仍可能调整样式。浏览器预览不是最终证明；真实粘贴出现差异时，以公众号编辑器结果为准并降级结构。
 
 **Q：能自己加主题吗？**
 A：两种方式。① **让 AI 生成**：说「按这个风格 / 这张图生成一套公众号主题」，它会走 `references/theme-generator.md` 的流程生成组件库、登记并复用。② **手写贡献**：照 `CONTRIBUTING.md` 的「新增一套主题风格」，跑通可验证循环即可提 PR。
@@ -367,6 +380,7 @@ A：跑 `scripts/validate_gzh_html.py`，报 ERROR 就回到装配步骤修；�
 |---|---|---|
 | PowerShell 中文显示乱码 | 控制台编码与文件编码是否混用 | 控制台可按需使用 GBK 显示，但 Markdown、YAML、JSON、Python 和 HTML 文件读写必须显式使用 UTF-8；不要把乱码复制回文件 |
 | 粘贴到公众号后样式丢失 | 是否出现 `<style>`、`class`、`div` 或平台禁用 CSS | 运行 `python scripts/validate_gzh_html.py <产物>`，按 ERROR 修复后重新粘贴 |
+| 四象限／卡片全部挤在左半边 | 是否用父级 flex + 子项 `width:50%`／`flex-basis:50%` | 改为全宽纵向块级卡片；重新运行两道校验并在真实公众号编辑器复测 |
 | 代码块出现大面积空白 | 主题是否使用 `white-space: pre` | 运行 `python scripts/component_lint.py .`，改为每行一个 `<p>` 的结构 |
 | 本地图片粘贴后不可见 | 图片地址是否仍是本地路径 | 先使用 `scripts/upload_image.py` 上传到已配置图床，再生成 HTML；不要在 Issue 中提交密钥 |
 | Word 表格列数错位 | 单元格中是否有转义竖线 `\|` | 使用当前版本重新归一化 DOCX；若仍能复现，附脱敏后的最小表格提交 Bug Issue |
@@ -390,11 +404,11 @@ A：跑 `scripts/validate_gzh_html.py`，报 ERROR 就回到装配步骤修；�
 
 如果这个项目帮到了你，点个 Star 支持一下～
 
-<a href="https://www.star-history.com/?repos=FreeCodeCampXYG%2Fstarline-gzh-design&type=date&legend=top-left">
+<a href="https://www.star-history.com/?repos=isjiamu%2Fgzh-design-skill&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=FreeCodeCampXYG/starline-gzh-design&type=date&theme=dark&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=FreeCodeCampXYG/starline-gzh-design&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=FreeCodeCampXYG/starline-gzh-design&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=isjiamu/gzh-design-skill&type=date&theme=dark&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=isjiamu/gzh-design-skill&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=isjiamu/gzh-design-skill&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
  </picture>
 </a>
 
@@ -402,9 +416,9 @@ A：跑 `scripts/validate_gzh_html.py`，报 ERROR 就回到装配步骤修；�
 
 欢迎新主题、修复与文档改进，请先读 [CONTRIBUTING.md](CONTRIBUTING.md)。提交问题时优先使用 `.github/ISSUE_TEMPLATE/` 中的模板；提交 Pull Request 时请保留复现输入、验证结果、关联 Issue 和兼容性说明。
 
-## 📄 License
+## License
 
-**AGPL-3.0 © 2026 Starline（墨点星痕）**
+**AGPL-3.0 © 2026 甲木 × 摸鱼小李**
 
 本项目采用 **GNU AGPL-3.0** 协议，要点：
 
@@ -415,11 +429,19 @@ A：跑 `scripts/validate_gzh_html.py`，报 ERROR 就回到装配步骤修；�
 
 完整条款见 [LICENSE](LICENSE)。
 
-> 🤝 **欢迎 AI Agent 厂商、模型厂商共创**：想把 gzh-design 集成进产品、或基于它做深度共建，我们很欢迎——共创协议请联系 Starline（墨点星痕）。
+> 🤝 **欢迎 AI Agent 厂商、模型厂商共创**：想把 gzh-design 集成进产品、或基于它做深度共建，我们很欢迎——共创协议请联系甲木。
 
 ## 🙏 致谢
 
-- 本项目由 **Starline（墨点星痕）** 维护与增强：上游组件库与主题设计标准由 甲木 × 摸鱼小李 联名共建。
+- 本项目由 **甲木 × 摸鱼小李** 联名共建：核心组件库与主题设计标准凝聚了两人的公众号排版实践。
 - 质量工程（可验证循环）由 skill-optimizer 审计驱动打磨。
 
 ---
+
+<div align="center">
+
+<img src="https://origin.picgo.net/2026/07/07/22e8d28de5f71eee085939b2f4c1f19548b19a67a79bdb68.png" width="600" alt="甲木 × 摸鱼小李 公众号名片">
+
+<sub>关注我们的公众号，获取更多 AI 干货与排版实践 👆</sub>
+
+</div>

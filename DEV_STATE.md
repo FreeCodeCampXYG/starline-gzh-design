@@ -2,6 +2,7 @@
 
 ## Current Goal
 - 在 `.agents/skills/starline-gzh-design` 和 `FreeCodeCampXYG/starline-gzh-design` 维护可直接使用、可核对来源、可规范提交 Issue/PR 的 Starline 微信公众号排版 skill。
+- 当前增量目标：把“读者任务优先、整理法则降级”和“关键结构禁止 50% 半宽列”固化为排版流程、组件模板、确定性校验与回归用例。
 
 ## Completed Work
 - 已安装 `isjiamu/gzh-design-skill` 基础版，并迁移为本地 `name: starline-gzh-design`。
@@ -22,16 +23,39 @@
 - README 的安装、克隆和更新命令已切换到 Starline Fork；上游署名、灵感来源和上游 Release 图片链接继续保留。
 - 首次增强发布已通过 GitHub Pull Request #1 合并到 `main`，合并提交为 `9cdd6d8`；未直接推送或改写默认分支历史。
 - GitHub 仓库描述已更新为当前 8 套主题和增强能力，并增加 `agent-skill`、`claude-code`、`codex`、`markdown`、`wechat` 分类标签。
+- GitHub Fork 创建时默认关闭的 Issues 功能已显式开启；`bug_report.md`、`feature_request.md` 和 `theme_request.md` 可从新建 Issue 页面选择。
+- 本地安装目录已新增 `references/theme-apple-open-course.md`，并在主题索引与自动推荐规则中登记为第 9 套主题。
+- 新主题提供课程开场、学习目标、编号章节、四象限、步骤线、来源致谢与作者签名组件；不使用 Apple 品牌资产。
+- `SKILL.md` 与 `manifest.json` 的本地版本已更新为 `1.1.0`，中英文 README 已同步主题数量。
+- 已将本地版本更新为 `1.2.0`：发布前优先读取项目 `DEV_STATE.md` 的“公众号发布身份”，缺失时一次询问两项，确认后写回并复用。
+- 已禁止把作者身份占位符作为可直接发布成品交付；`validate_gzh_html.py` 会把未替换的署名、简介或作者身份占位符判为 ERROR。
+- 已同步更新一阶段、两阶段标注格式、回归用例与 `agents/interface.yaml`；全自动模式不能绕过发布身份门槛，明确匿名发布可省略作者介绍区。
+- 已将本地版本更新为 `1.3.0`，新增 `references/content-hierarchy.md`：排版前先写读者任务、唯一结果、核心路径和辅助信息四行层级简报。
+- 已规定用户说“用二八／STAR／四象限整理 X”时，默认 X 是文章主题、法则是整理手段；只有文章明确讲法则本身时，法则才能进入封面和主章节。
+- 已将苹果公开课风的四象限组件由 2×2 半宽 flex 改为四张全宽纵向卡片，五步课程线也改为不依赖 flex 的块级结构。
+- 已在 `component_lint.py` 与 `validate_gzh_html.py` 中拦截 `width:50%`／`flex-basis:50%`，避免微信剥离父级 flex 后内容堆在左半屏。
+- 已同步更新中英文 README、主题索引、默认 Prompt 和回归用例；真实公众号粘贴结果的证据优先级高于浏览器预览。
+- 已把 README 许可证标题改为发布器可识别的标准 `## License`，继续明确继承上游 AGPL-3.0，不改成 MIT。
+- 已新增 `evals/trigger_cases.json`，覆盖公众号排版、自动主题、两阶段标注、图床修复与草稿上传，并加入普通网页、PPT、写作和 PDF 笔记等误触发边界。
+- 已为 `component_lint.py`、`minify_gzh_html.py`、`upload_image.py`、`wechat_draft.py`、`wrap_preview.py` 补齐 `argparse --help`，保留原有位置参数调用方式。
+- 已新增 `tests/test_release_behaviors.py`，固定验证半宽组件拦截、全宽组件放行、HTML 压缩和 5 个公开脚本帮助入口。
+- 已用 `starline-meta-skill` 导出 `reports/skill-ir.json` 与通过的 `reports/trigger-eval.json`，满足版本和评估报告一致性门禁。
 
 ## Key Decisions
 - #6 是与 #7 重复的已关闭 PR，未重复合并；采用包含主题推荐规则的 #7。
 - #3、#5、#8、#12、#13 只有 issue 描述，没有可审查的提交，因此没有伪造合并记录或擅自实现不明确需求。
 - API 草稿箱、图床和脚注能力继续放在同一个 `gzh-design` skill 中。
+- 苹果公开课风用系统蓝、细线与大留白建立层级；来源致谢放在正文完成后、参考资料前，不打断开场且不省略署名。
 - Windows 控制台含 emoji 的脚本验证使用 `PYTHONIOENCODING=utf-8`，文件内容按 UTF-8 处理。
 - 已将本地目录从 `.agents/skills/gzh-design` 移动为 `.agents/skills/starline-gzh-design`；上游 URL 和 `~/.gzh-design` 图床配置路径保持不变，以兼容已有配置。
 - 已补齐 Starline 包元数据：`manifest.json`、`agents/interface.yaml`，并在根 `SKILL.md` 写入 author/version/upstream metadata。
 - GitHub Issue 默认不接受空白提交；非主题能力使用独立的 `Feature request` 模板，避免与主题设计需求混杂。
 - GitHub 发布使用功能分支和 Pull Request，不直接在默认分支开发；目标仓库固定使用仓库级 `core.autocrlf=false`。
+- 发布身份只保存用户确认可公开的署名与简介，不从 Git 邮箱、系统账户或文件信息推断，也不把联系方式和凭证写入公开项目。
+- 内容层级的核心顺序固定为“读者任务／核心动作 > 步骤与证据 > 整理法则／来源”；主题组件只能表达这个顺序，不能反转它。
+- #8 没有可合并提交，但本次已有真实公众号粘贴截图和可复现的父级 flex／子项半宽失效结构，因此独立实现窄范围兼容规则，不声称合并了上游修复。
+- 未全局禁止 `flex-wrap`：其它主题仍用它处理自适应标签；只确定性禁止会导致半屏空白的 50% 固定半宽列，并要求关键关系使用全宽块级结构。
+- 本次属于生产故障的定向泛化，不做新的 prior-art 搜索；通过显式反例保留“文章本身讲 STAR 时可把 STAR 作为主主题”的边界。
 
 ## Core Files
 - `SKILL.md`
@@ -45,33 +69,42 @@
 - `.github/ISSUE_TEMPLATE/config.yml`
 - `.github/PULL_REQUEST_TEMPLATE.md`
 - `references/theme-index.md`
+- `references/content-hierarchy.md`
 - `references/theme-klein-blue.md`
+- `references/theme-apple-open-course.md`
 - `references/theme-tech-cobalt.md`
 - `references/annotated-format.md`
 - `references/common-components.md`
 - `references/format-normalize.md`
 - `references/eval-cases.md`
+- `evals/trigger_cases.json`
+- `reports/skill-ir.json`
+- `reports/trigger-eval.json`
+- `tests/test_release_behaviors.py`
 - `scripts/validate_gzh_html.py`
+- `scripts/component_lint.py`
 - `scripts/extract_docx.py`
 - `scripts/wechat_draft.py`
 - `scripts/minify_gzh_html.py`
 - `scripts/upload_image.py`
 
 ## Verification
-- 临时合并仓库：`python -m compileall -q scripts` 通过。
-- 临时合并仓库：`PYTHONIOENCODING=utf-8 python scripts/component_lint.py .` 通过，15/15 个组件库 `ERROR×0、WARN×0`。
-- 临时合并仓库：合并提交范围 `git diff --check` 通过。
-- 临时合并仓库：7 个文章画廊 HTML 通过 `validate_gzh_html.py`，ERROR/WARN 均为 0。
-- 安装目录同步后已重新执行：`python -m compileall -q scripts` 通过；`component_lint.py` 为 15/15 个组件库 `ERROR×0、WARN×0`；7 个文章画廊 HTML 的 `validate_gzh_html.py` 均为 ERROR/WARN 0；源仓库与安装目录文件哈希一致（排除 DEV_STATE、`.git`、缓存文件）。
-- Starline 包门禁：`validate_skill.py .` 通过，`failures=[]`。
-- 本次文档和模板更新后重新验证：`python -m compileall -q scripts` 通过；`component_lint.py` 为 15/15 个组件库 `ERROR×0、WARN×0`；7 个文章画廊 HTML 全部合规。
-- 本次文档和模板更新后 `validate_skill.py .` 继续通过；README 的自然语言示例、验证命令和故障排查提醒均已消除。
-- 准备推送的 Git 工作树已重新执行全部门禁：`compileall` 通过；15/15 个组件库 `ERROR×0、WARN×0`；7 个文章画廊 HTML 全部合规；`validate_skill.py` 为 `ok=true`；`git diff --check` 通过。
-- 从远端 `main` 执行全新浅克隆后再次验证：工作树干净，`validate_skill.py` 为 `ok=true`，`compileall` 通过，15/15 个组件库 `ERROR×0、WARN×0`，根 `SKILL.md` 为 `name: starline-gzh-design`。
+- 历史远端 `main` 浅克隆验证曾通过 `validate_skill.py`、`compileall` 与全部画廊合规检查；GitHub 仓库 Issues 和 3 个 Issue 模板已启用。
+- `wrap_preview.py` 固定使用 LF 输出，避免 `core.autocrlf=false` 仓库中的逐行尾随空白。
+- v1.3.0 本地验证：`python -m compileall -q scripts` 通过；`component_lint.py` 为 17/17 个组件库 `ERROR×0、WARN×0`。
+- v1.3.0 正反例验证：父级 flex + 子项 `width:50%` 的旧失败结构被 `validate_gzh_html.py` 按预期拦截并返回退出码 1；全宽块级结构返回退出码 0。
+- v1.3.0 真实产物验证：`learning-library` 当前公众号正文为 132 处 `span leaf`，新校验器 `ERROR×0、WARN×0`。
+- `trigger_eval.py` 对 16 个触发、非触发和相邻场景全部判定正确，`pass_rate=1.0`。
+- `python -m unittest discover -s tests -p test_*.py -v` 的 4 项回归测试全部通过。
+- `starline-meta-skill/scripts/validate_skill.py .` 通过，`failures=[]`、`warnings=[]`；5 个命令行脚本的 `--help` 均返回退出码 0。
+- `manifest.json` 与根 `SKILL.md` 版本均为 `1.3.0`；UTF-8 读取和 JSON 解析通过。
 
 ## Known Issues
 - `docs/gallery/index.html` 是导航网页，不是公众号正文，不能送入 `validate_gzh_html.py`；文章画廊文件与导航页需分开校验。
-- #3、#5、#8、#12、#13 当前仍是无提交 issue；其中 #5 描述不足，#8 涉及平台红线下的移动适配策略，#12/#13 需要明确设计方案后再实现。
-- `validate_skill.py` 仍提示缺少机器化 `evals/trigger_cases.json`，以及 5 个脚本缺少 argparse 帮助或内部模块标记；当前为本地 Scaffold 迁移，不阻塞使用。
-- 安装目录本身不是 Git 工作树；Git 差异检查、提交和远端同步在工作区的发布工作树中执行。
-- 当前尚未创建版本化 Release；首个正式 Release 应在后续确认版本号和发布说明后单独执行。
+- #3、#5、#12、#13 当前仍是无提交 issue；其中 #5 描述不足，#12/#13 需要明确设计方案后再实现。#8 已基于真实粘贴复现独立实现兼容规则，但仍没有可归因的上游提交。
+- 本地安装目录不是 Git 工作树；v1.3.0 当前只更新本地可用 Skill，无法在此目录执行 Git 差异检查，也尚未同步到 GitHub Fork 或创建 Release。
+
+## Failed Approaches
+
+- 未采用“全局禁止 `flex-wrap`”：现有主题把它用于标签自然换行，全面禁用会误伤安全组件。最终规则只拦截 `width/flex-basis:50%`，并把关键矩阵改为全宽块级结构。
+- 未把“法则名称一律降级”写成绝对规则：这会误伤真正讲 STAR／二八法则的文章。最终以读者任务是否就是该法则作为边界。

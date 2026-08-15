@@ -1,0 +1,125 @@
+{
+  "recommended_threshold": 0.34,
+  "description_required_concepts": [
+    "wechat",
+    "layout_action",
+    "source"
+  ],
+  "positive_concepts": {
+    "wechat": [
+      "公众号",
+      "微信公众号",
+      "微信排版",
+      "gzh"
+    ],
+    "layout_action": [
+      "排版",
+      "转换",
+      "直接粘贴",
+      "上传草稿",
+      "自动排版",
+      "一键排版",
+      "先标注"
+    ],
+    "source": [
+      "Markdown",
+      "md",
+      "docx",
+      "Word",
+      "PDF",
+      "纯文本",
+      "文章"
+    ],
+    "html_output": [
+      "HTML",
+      "草稿箱",
+      "草稿",
+      "图床",
+      "公网 URL"
+    ],
+    "theme": [
+      "主题",
+      "风格",
+      "组件库",
+      "作者签名"
+    ]
+  },
+  "negative_patterns": [
+    "不要公众号排版",
+    "不是公众号",
+    "普通网页",
+    "落地页",
+    "做 PPT",
+    "只写内容"
+  ],
+  "should_trigger": [
+    {
+      "text": "把这篇 Markdown 文章排版成可以直接粘贴到微信公众号的 HTML。",
+      "family": "markdown_to_wechat_html"
+    },
+    {
+      "text": "用苹果公开课风格帮我一键排版这篇公众号文章。",
+      "family": "auto_theme_layout"
+    },
+    {
+      "text": "这个 Word 文档整理好后上传到微信公众号草稿箱。",
+      "family": "docx_to_draft"
+    },
+    {
+      "text": "先标注文章结构，再做微信排版，我要检查后重渲染。",
+      "family": "two_stage_layout"
+    },
+    {
+      "text": "公众号里的本地图片粘贴后不显示，帮我上传图床并重新排版。",
+      "family": "image_host_repair"
+    },
+    {
+      "text": "参考这张图，为我的公众号生成一套可复用主题组件库。",
+      "family": "custom_theme"
+    },
+    {
+      "text": "把这份 PDF 归一化成文章，并生成微信公众号草稿。",
+      "family": "pdf_to_draft"
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "text": "帮我只写公众号选题内容，不要公众号排版。",
+      "family": "writing_only"
+    },
+    {
+      "text": "把这份需求做成普通网页落地页。",
+      "family": "landing_page"
+    },
+    {
+      "text": "根据这些资料做 PPT。",
+      "family": "slides"
+    },
+    {
+      "text": "检查这段 Python 代码为什么报错。",
+      "family": "coding"
+    },
+    {
+      "text": "把这篇英文文章翻译成中文。",
+      "family": "translation"
+    }
+  ],
+  "near_neighbor": [
+    {
+      "text": "给我的产品官网设计一个苹果风格主题。",
+      "family": "web_theme"
+    },
+    {
+      "text": "分析这个 PDF 的核心观点，输出学习笔记。",
+      "family": "pdf_notes"
+    },
+    {
+      "text": "帮我给文章起一个更吸引人的标题。",
+      "family": "title_only"
+    },
+    {
+      "text": "把图片上传到对象存储，返回公网 URL。",
+      "family": "generic_image_upload"
+    }
+  ]
+}
