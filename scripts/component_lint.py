@@ -12,6 +12,7 @@
 退出码：1 = 有 ERROR，0 = 通过。
 """
 
+import argparse
 import glob
 import os
 import re
@@ -31,6 +32,9 @@ CHECKS = [
     (re.compile(r"position\s*:\s*(fixed|absolute|sticky)", re.I), "ERROR",
      "position fixed/absolute/sticky 不被支持"),
     (re.compile(r"display\s*:\s*grid", re.I), "ERROR", "display:grid 不被支持"),
+    (re.compile(r"(?:width|flex-basis)\s*:\s*50(?:\.0+)?%", re.I), "ERROR",
+     "使用了 50% 半宽列——公众号可能剥离父级 flex 却保留子项半宽，"
+     "导致内容堆在左半屏；请改为全宽块级结构"),
     (re.compile(r"var\s*\(\s*--", re.I), "ERROR", "用了 CSS 变量 var(--x)"),
     (re.compile(r"@(media|keyframes|import)", re.I), "ERROR", "@media/@keyframes/@import 不被支持"),
 ]
@@ -41,7 +45,8 @@ CENTERED = re.compile(r"text-align\s*:\s*center", re.I)
 
 
 def lint_file(path):
-    text = open(path, encoding="utf-8", errors="replace").read()
+    with open(path, encoding="utf-8", errors="replace") as source:
+        text = source.read()
     name = os.path.basename(path).replace("公众号排版组件库 —— ", "").replace(".md", "")
     found = []  # (level, msg)
     seen = set()
@@ -63,8 +68,13 @@ def lint_file(path):
     return name, found
 
 
-def main():
-    root = sys.argv[1] if len(sys.argv) > 1 else "."
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="检查公众号主题组件库中的微信不兼容 HTML/CSS。"
+    )
+    parser.add_argument("skill_dir", nargs="?", default=".", help="Skill 根目录（默认当前目录）。")
+    args = parser.parse_args(argv)
+    root = args.skill_dir
     refs = sorted(glob.glob(os.path.join(root, "references", "*.md")))
     if not refs:
         print(f"未找到 {root}/references/*.md")

@@ -12,8 +12,8 @@
     from minify_gzh_html import minify_html
     minified = minify_html(html_string)
 """
+import argparse
 import re
-import sys
 
 
 def minify_html(html):
@@ -80,11 +80,15 @@ def minify_file(input_path, output_path=None):
     return minified
 
 
-if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print(__doc__)
-        sys.exit(1)
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="压缩公众号 HTML，避免源码空白破坏微信端排版。"
+    )
+    parser.add_argument("input_file", help="待压缩的 HTML 文件。")
+    parser.add_argument("output_file", nargs="?", help="输出文件；省略时原地压缩并生成 .bak。")
+    args = parser.parse_args(argv)
+    minify_file(args.input_file, args.output_file)
 
-    input_file = sys.argv[1]
-    output_file = sys.argv[2] if len(sys.argv) > 2 else None
-    minify_file(input_file, output_file)
+
+if __name__ == '__main__':
+    main()

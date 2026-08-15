@@ -2,7 +2,7 @@ interface:
   display_name: "Starline GZH Design"
   author: "墨点星痕 (starline)"
   short_description: "把 Markdown、Word、PDF 或纯文本排成可直接粘贴到微信公众号的内联 HTML"
-  default_prompt: "Use $starline-gzh-design to convert my article into paste-ready WeChat HTML. Select one registered theme, preserve the source content, upload local images before layout when configured, convert external Markdown links to footnotes, validate the final HTML to zero errors and warnings, and generate a browser preview for manual copy. Use the two-stage annotated workflow only when I request annotation before rendering."
+  default_prompt: "Use $starline-gzh-design to convert my article into paste-ready WeChat HTML. First identify the reader's primary job and keep organizational frameworks secondary unless the article is explicitly about them. Reuse my confirmed public author name and one-line bio from the project DEV_STATE.md or ask for both once and save them there; never deliver identity placeholders. Then select a registered theme, preserve the source, avoid half-width flex columns, validate to zero errors and warnings, and generate a browser preview."
   examples:
     - "用 starline-gzh-design 把这篇 Markdown 排成公众号 HTML"
     - "直接用科技钴蓝主题一键排版这篇文章"
@@ -27,9 +27,9 @@ compatibility:
     generated_public_claims: "evidence-bound"
   permissions:
     network: "optional image-host upload and WeChat draft API only when configured and requested"
-    file_write: "article HTML, preview files, annotated Markdown, and local upload cache"
+    file_write: "article HTML, preview files, annotated Markdown, project DEV_STATE publishing profile, and local upload cache"
     subprocess: "bundled Python normalization, upload, validation, minification, and preview scripts"
-    interactive: "theme confirmation unless the user requests automatic layout"
+    interactive: "theme confirmation unless automatic layout is requested; one-time public author identity confirmation when project DEV_STATE is incomplete"
   degradation:
     openai: "canonical-source"
     claude: "canonical-source"

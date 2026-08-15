@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """微信公众号 HTML 合规校验器。
 
-把 SKILL.md 里"必须遵守的平台限制"从模型自觉变成确定性兜底。
+把 SKILL.md 里的平台限制与发布就绪要求从模型自觉变成确定性兜底。
 排版生成后必跑：检查禁用标签/属性/样式，并核查文字节点是否用
 <span leaf=""> 包裹（公众号编辑器粘贴后保持样式的关键）。
 
@@ -9,7 +9,7 @@
     validate_gzh_html.py <file.html>
     validate_gzh_html.py --stdin < file.html
 
-退出码: 1 = 有 ERROR（会被公众号过滤或粘贴后样式丢失）; 0 = 通过。
+退出码: 1 = 有 ERROR（平台不兼容或仍需用户手动补资料）; 0 = 通过。
 """
 
 import argparse
@@ -32,6 +32,8 @@ FORBIDDEN = [
     (re.compile(r"@keyframes", re.I), "ERROR", "@keyframes 动画不被支持"),
     (re.compile(r"@import", re.I), "ERROR", "@import 不被支持"),
     (re.compile(r"display\s*:\s*grid", re.I), "ERROR", "display:grid 不被支持，请用 flex"),
+    (re.compile(r"(?:width|flex-basis)\s*:\s*50(?:\.0+)?%", re.I), "ERROR",
+     "50% 半宽列在父级 flex 被微信剥离后会堆在左半屏，请改为全宽块级结构"),
     (re.compile(r"var\s*\(\s*--", re.I), "ERROR", "CSS 变量 var(--x) 不被支持，请写死值"),
     (re.compile(r"url\s*\(\s*['\"]?https?://[^)]*\.(woff2?|ttf|otf|eot)", re.I),
      "ERROR", "外部字体不被支持"),
@@ -47,6 +49,9 @@ CODE_STYLE = re.compile(r"monospace|white-space\s*:\s*pre|courier|consolas|sf mo
 SECTION_START = re.compile(r"<section\b([^>]*)>", re.I)
 STYLE_ATTR = re.compile(r"\bstyle\s*=\s*(['\"])(.*?)\1", re.I | re.S)
 BACKGROUND_PROP = re.compile(r"(?:^|;)\s*background(?:-[\w-]+)?\s*:", re.I)
+PUBLISH_IDENTITY_PLACEHOLDER = re.compile(
+    r"\{\{\s*(?:作者名|作者身份|简介|一句话简介(?:，?如：[^}]*)?)\s*\}\}"
+)
 
 
 class LeafChecker(HTMLParser):
@@ -101,6 +106,12 @@ class LeafChecker(HTMLParser):
 
 def validate(html, name="<input>"):
     errors, warnings = [], []
+
+    identity_placeholders = PUBLISH_IDENTITY_PLACEHOLDER.findall(html)
+    if identity_placeholders:
+        errors.append(
+            f"仍有 {len(identity_placeholders)} 处发布身份占位符。请先读取项目 "
+            "DEV_STATE.md，缺失时一次询问公众号署名与一句话简介，再生成成品")
 
     for rx, level, msg in FORBIDDEN:
         hits = len(rx.findall(html))
@@ -166,7 +177,7 @@ def main():
     print(f"📋 公众号 HTML 合规校验: {name}")
     print(f"   span leaf 包裹: {leaf_n} 处")
     if errors:
-        print(f"\n❌ ERROR ×{len(errors)}（必须修复，否则粘贴后失效）:")
+        print(f"\n❌ ERROR ×{len(errors)}（必须修复，否则不能作为可直接发布成品）:")
         for e in errors:
             print(f"   • {e}")
     if warnings:

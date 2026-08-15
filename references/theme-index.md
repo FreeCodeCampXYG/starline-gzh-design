@@ -12,6 +12,7 @@
 | 科技钴蓝 | `#1D4ED8` cobalt | AI 工具、开发教程、产品说明、工作流指南（冷静清晰、信息密度高、黄蓝对比） | `references/theme-tech-cobalt.md` | `border-bottom:2px solid #93C5FD;font-weight:600;` |
 | 红白色系 | `#DC2626` 正红 | 深度分析、观点、力量感话题（经典编辑风，编号章节+引言卡+签名区，红色克制点睛） | `references/theme-red-white.md` | `border-bottom:2px solid #FECACA;font-weight:600;` |
 | 石墨极简风 | `#52525B` 石墨灰 | 设计、科技评论、专业观点、高端品牌（极简克制、留白理性、全灰阶） | `references/theme-graphite-minimal.md` | `border-bottom:2px solid #52525B;font-weight:600;` |
+| 苹果公开课风 | `#0066CC` 系统蓝 | 方法论、公开课、知识框架、商业策略与教程（读者任务优先、步骤编号、全宽关系组、细线与大留白；不使用 Apple 品牌资产） | `references/theme-apple-open-course.md` | `border-bottom:2px solid #0066CC;font-weight:650;color:#1D1D1F;` |
 | 留白禅意风 | `#4A5D52` 墨绿 | 禅意冥想、极简生活、深度随笔、艺术留白（呼吸感最强） | `references/theme-zen-whitespace.md` | `border-bottom:1.5px solid #B5C8BC;font-weight:500;` |
 | 摸鱼票据风 | `#059669` emerald | 测评、工具对比、创意评测（票据/门票视觉隐喻，星级评分+编号+硬阴影卡片） | `references/theme-moyu-ticket.md` | `border-bottom:2px solid #A7F3D0;font-weight:600;` |
 | 橄榄手记 | `#1e1f23` 墨黑（配橙 `#ed7b2f`） | 内刊手记、深度评测、案例复盘、系统性说明文档（编辑部内刊质感，分节形式多样，信息密度偏高） | `references/theme-olive-journal.md` | `border-bottom:2px solid #ed7b2f;font-weight:600;` |

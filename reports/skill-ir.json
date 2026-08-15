@@ -1,0 +1,136 @@
+{
+  "schema_version": "2.0.0-starline-lite",
+  "generated_at": "2026-08-16",
+  "package": {
+    "name": "starline-gzh-design",
+    "version": "1.3.0",
+    "owner": "墨点星痕 (starline)",
+    "maturity_tier": "scaffold",
+    "lifecycle_stage": "local",
+    "upstream_inspiration": "https://github.com/isjiamu/gzh-design-skill",
+    "upstream_sync": {}
+  },
+  "intent": {
+    "description": "微信公众号文章排版引擎，将 Markdown 转换为可直接粘贴到公众号编辑器的 HTML，并支持 API 直传公众号草稿箱、本地图片上传图床换公网 URL。主题风格从 references/theme-index.md 注册的自定义主题库中选取，自动章节编号、关键词下划线标记、引言卡片、目录导航、代码块、图片/GIF、作者签名。支持 Markdown / Word(.docx) / PDF / 纯文本输入（非 Markdown 先自动归一化），也支持\"一键自动排版\"（自动推断结构+选主题+可选 API 上传草稿箱），还支持根据用户描述/参考图生成自定义主题组件库并保存本地复用，以及把本地图片自动上传图床（七牛等）换成公网 URL（解决本地图粘不进公众号），支持\"先标注再排版\"的两阶段模式（产出可检查、可修正、可重渲染的标注版 Markdown）。触发场景：(1) 用户提到\"公众号排版\"\"公众号文章\"\"微信排版\"\"gzh\"，(2) 用户想把文章（md/docx/pdf/纯文本）转成公众号 HTML，(3) 用户说\"自动排版\"\"一键排版\"公众号内容，(4) 用户想为公众号排版\"生成新主题/自定义风格/按这张图做一套组件库\"，(5) 用户想把排版 HTML 上传为微信公众号草稿，(6) 用户说\"先标注\"\"两步排版\"\"标注后再排\"进入两阶段模式。不用于生成普通网页/落地页/PPT（用前端或 PPT 类 skill）。",
+    "job_to_be_done": "微信公众号文章排版引擎，将 Markdown 转换为可直接粘贴到公众号编辑器的 HTML，并支持 API 直传公众号草稿箱、本地图片上传图床换公网 URL。主题风格从 references/theme-index.md 注册的自定义主题库中选取，自动章节编号、关键词下划线标记、引言卡片、目录导航、代码块、图片/GIF、作者签名。支持 Markdown / Word(.docx) / PDF / 纯文本输入（非 Markdown 先自动归一化），也支持\"一键自动排版\"（自动推断结构+选主题+可选 API 上传草稿箱），还支持根据用户描述/参考图生成自定义主题组件库并保存本地复用，以及把本地图片自动上传图床（七牛等）换成公网 URL（解决本地图粘不进公众号），支持\"先标注再排版\"的两阶段模式（产出可检查、可修正、可重渲染的标注版 Markdown）。触发场景：(1) 用户提到\"公众号排版\"\"公众号文章\"\"微信排版\"\"gzh\"，(2) 用户想把文章（md/docx/pdf/纯文本）转成公众号 HTML，(3) 用户说\"自动排版\"\"一键排版\"公众号内容，(4) 用户想为公众号排版\"生成新主题/自定义风格/按这张图做一套组件库\"，(5) 用户想把排版 HTML 上传为微信公众号草稿，(6) 用户说\"先标注\"\"两步排版\"\"标注后再排\"进入两阶段模式。不用于生成普通网页/落地页/PPT（用前端或 PPT 类 skill）。",
+    "target_users": [
+      "Starline operator"
+    ],
+    "inputs": [],
+    "outputs": [],
+    "exclusions": [],
+    "starline_defaults": {},
+    "naming": {
+      "prefix": "starline-",
+      "migration_from": "gzh-design"
+    }
+  },
+  "triggers": {
+    "should_trigger": [
+      "把这篇 Markdown 文章排版成可以直接粘贴到微信公众号的 HTML。",
+      "用苹果公开课风格帮我一键排版这篇公众号文章。",
+      "这个 Word 文档整理好后上传到微信公众号草稿箱。",
+      "先标注文章结构，再做微信排版，我要检查后重渲染。",
+      "公众号里的本地图片粘贴后不显示，帮我上传图床并重新排版。",
+      "参考这张图，为我的公众号生成一套可复用主题组件库。",
+      "把这份 PDF 归一化成文章，并生成微信公众号草稿。"
+    ],
+    "should_not_trigger": [
+      "帮我只写公众号选题内容，不要公众号排版。",
+      "把这份需求做成普通网页落地页。",
+      "根据这些资料做 PPT。",
+      "检查这段 Python 代码为什么报错。",
+      "把这篇英文文章翻译成中文。"
+    ],
+    "near_neighbor": [
+      "给我的产品官网设计一个苹果风格主题。",
+      "分析这个 PDF 的核心观点，输出学习笔记。",
+      "帮我给文章起一个更吸引人的标题。",
+      "把图片上传到对象存储，返回公网 URL。"
+    ]
+  },
+  "workflow": {
+    "router_rules": [],
+    "compact_workflow": [],
+    "gate_ladder": [],
+    "output_contract": []
+  },
+  "resources": {
+    "references": [
+      "references\\annotated-format.md",
+      "references\\common-components.md",
+      "references\\content-hierarchy.md",
+      "references\\eval-cases.md",
+      "references\\format-normalize.md",
+      "references\\image-host.md",
+      "references\\theme-apple-open-course.md",
+      "references\\theme-generator.md",
+      "references\\theme-graphite-minimal.md",
+      "references\\theme-index.md",
+      "references\\theme-klein-blue.md",
+      "references\\theme-moyu-green.md",
+      "references\\theme-moyu-ticket.md",
+      "references\\theme-olive-journal.md",
+      "references\\theme-red-white.md",
+      "references\\theme-tech-cobalt.md",
+      "references\\theme-zen-whitespace.md"
+    ],
+    "scripts": [
+      "scripts\\component_lint.py",
+      "scripts\\extract_docx.py",
+      "scripts\\minify_gzh_html.py",
+      "scripts\\upload_image.py",
+      "scripts\\validate_gzh_html.py",
+      "scripts\\wechat_draft.py",
+      "scripts\\wrap_preview.py"
+    ],
+    "evals": [
+      "evals\\trigger_cases.json"
+    ],
+    "reports": [
+      "reports\\skill-ir.json",
+      "reports\\trigger-eval.json"
+    ]
+  },
+  "portability": {
+    "canonical_format": "agent-skills",
+    "adapter_targets": [
+      "openai",
+      "claude",
+      "generic",
+      "agent-skills-compatible"
+    ],
+    "activation": {
+      "mode": "manual-or-description",
+      "paths": []
+    },
+    "execution": {
+      "context": "inline",
+      "shell": "powershell-or-bash"
+    },
+    "trust": {
+      "source_tier": "local-enhanced-upstream",
+      "remote_inline_execution": "forbid",
+      "generated_public_claims": "evidence-bound"
+    },
+    "permissions": {
+      "network": "optional image-host upload and WeChat draft API only when configured and requested",
+      "file_write": "article HTML, preview files, annotated Markdown, project DEV_STATE publishing profile, and local upload cache",
+      "subprocess": "bundled Python normalization, upload, validation, minification, and preview scripts",
+      "interactive": "theme confirmation unless automatic layout is requested; one-time public author identity confirmation when project DEV_STATE is incomplete"
+    },
+    "degradation": {
+      "openai": "canonical-source",
+      "claude": "canonical-source",
+      "generic": "instruction-compatible",
+      "agent-skills-compatible": "canonical-source"
+    }
+  },
+  "gates": {},
+  "evidence_boundary": {
+    "generated_reports_are_evidence": true,
+    "planned_work_is_evidence": false,
+    "missing_external_or_human_evidence_label": "missing evidence",
+    "public_claim_policy": "claim only what local validation, install proof, human review, or provider-backed evidence actually supports"
+  }
+}
