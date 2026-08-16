@@ -1,6 +1,4 @@
 > **Starline enhanced fork**: maintained by 墨点星痕 (starline) at [`FreeCodeCampXYG/starline-gzh-design`](https://github.com/FreeCodeCampXYG/starline-gzh-design), based on `isjiamu/gzh-design-skill` and community pull requests.
->
-> 🤝 **The upstream project is jointly built by Jiamu × [Moyu Xiaoli (摸鱼小李)](https://mp.weixin.qq.com/s/EMahAzgfAbRQrYukWE7_IQ)** — the components, theme design and quality bar are shaped by both authors' hands-on WeChat publishing practice. Special thanks to Xiaoli.
 
 <div align="center">
 
@@ -110,14 +108,6 @@ Then, once installed, tell your agent:
 
 > Lay out `article.md` as WeChat HTML using the Moyu Green theme.
 
-## 💬 Community
-
-Scan to join the **official WeChat Work group** (dynamic QR, auto-invite) — chat about WeChat layout & Agent Skills:
-
-<img src="https://github.com/isjiamu/gzh-design-skill/releases/download/assets-v1/group-qr.png" width="220" alt="WeChat Work group QR">
-
-> QR expired? Add WeChat **`zuiyn_soul`** (note "gzh-design") to get invited.
-
 ## 📖 Workflow
 
 1. **Calibrate hierarchy** — identify the reader job, one outcome, core path, and supporting frameworks.
@@ -203,23 +193,11 @@ Give just a primary color or a vibe, and the generator derives the whole harmoni
 
 **What if the agent's output isn't compliant?** Run `scripts/validate_gzh_html.py`; fix on ERROR until both gates are green. Still stuck? Open an Issue.
 
-## ⭐ Star History
-
-If this project helps you, a Star means a lot 🙏
-
-<a href="https://www.star-history.com/?repos=isjiamu%2Fgzh-design-skill&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=isjiamu/gzh-design-skill&type=date&theme=dark&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=isjiamu/gzh-design-skill&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=isjiamu/gzh-design-skill&type=date&legend=top-left&sealed_token=OSZCPLO_3NeTUKAtXcnNT6T3HuZwlFsH1HDGh6BcU0G2bdOm-5snTE01rzgYkwgNkF0pvraNI226pwK4jt9zYc4YuJ196yA1fcRRZKmfVQDMWqtE87dHqXn1E4v2q1mCWNFHzXAGJrCMEHx_0wwNmIVOg5nOaNCtRUYS2C_E1IlITdmy_yv7vpyVxqti" />
- </picture>
-</a>
-
 ## 🤝 Contributing · 📄 License
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Co-built by **Jiamu × Moyu Xiaoli** — the component libraries and theme design standards come from both authors' WeChat publishing practice.
+See [CONTRIBUTING.md](CONTRIBUTING.md). Maintained and enhanced by StarLine on top of [isjiamu/gzh-design-skill](https://github.com/isjiamu/gzh-design-skill) and community pull requests.
 
-**AGPL-3.0 © 2026 Jiamu × Moyu Xiaoli.** Key terms:
+**AGPL-3.0 © 2026 StarLine.** Key terms:
 
 1. **Attribution required** — keep the copyright and co-author notice.
 2. **Derivatives must be open source** — any modified version, fork or redistribution must be released under AGPL-3.0 (or a compatible license) with full source.
@@ -228,4 +206,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Co-built by **Jiamu × Moyu Xiaoli** —
 
 Full terms in [LICENSE](LICENSE).
 
-> 🤝 **AI Agent & model vendors welcome to co-create**: want to integrate gzh-design into your product or deeply co-build on it? We'd love that — contact Jiamu for the co-creation agreement.
+> 🤝 **AI Agent & model vendors welcome to co-create**: want to integrate gzh-design into your product or deeply co-build on it? We'd love that — contact StarLine for the co-creation agreement.
