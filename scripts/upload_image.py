@@ -27,6 +27,7 @@
 退出码: 0 成功 / 2 未配置或密钥缺失 / 1 上传失败。
 """
 
+import argparse
 import base64
 import hashlib
 import hmac
@@ -145,11 +146,17 @@ def upload_one(path, host, cfg, cache):
     return url
 
 
-def main():
-    args = sys.argv[1:]
-    as_json = "--json" in args
-    check = "--check" in args
-    files = [a for a in args if not a.startswith("--")]
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="上传公众号本地图片到图床，并输出可公开访问的 URL。"
+    )
+    parser.add_argument("files", nargs="*", help="本地图片路径或无需上传的 http(s) URL。")
+    parser.add_argument("--json", action="store_true", dest="as_json", help="以 JSON 映射输出结果。")
+    parser.add_argument("--check", action="store_true", help="仅检查图床配置，不上传。")
+    args = parser.parse_args(argv)
+    as_json = args.as_json
+    check = args.check
+    files = args.files
     host, cfg = load_config()
 
     if check:

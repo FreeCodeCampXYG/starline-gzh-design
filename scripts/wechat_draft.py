@@ -33,6 +33,7 @@ Python 用法（推荐）:
   )
 """
 
+import argparse
 import sys, os, json, re, datetime
 
 # ── 配置路径（可通过环境变量覆盖）───────────────────────────────────────
@@ -267,18 +268,23 @@ def cleanup_draft_nbsp(token, media_id):
 
 # ── 命令行入口 ─────────────────────────────────────────────────────────
 
-def main():
+def main(argv=None):
     """
     用法：
       python3 wechat_draft.py [封面图] [标题] [摘要] [正文html]
       正文支持 \\n 分段，也可重定向：python3 wechat_draft.py cover.jpg "标题" "摘要" < article.html
     """
-    import requests as _req
-    cover_path = (sys.argv[1] if len(sys.argv) > 1
-                  else os.environ.get('WECHAT_COVER_PATH', 'image_001.jpg'))
-    title      = (sys.argv[2] if len(sys.argv) > 2 else input("标题: "))
-    digest     = (sys.argv[3] if len(sys.argv) > 3 else input("摘要: "))
-    content    = (sys.argv[4] if len(sys.argv) > 4 else sys.stdin.read()
+    parser = argparse.ArgumentParser(description="上传公众号封面与正文并创建微信草稿。")
+    parser.add_argument("cover_path", nargs="?", help="封面图片路径。")
+    parser.add_argument("title", nargs="?", help="文章标题；省略时交互输入。")
+    parser.add_argument("digest", nargs="?", help="文章摘要；省略时交互输入。")
+    parser.add_argument("content", nargs="?", help="正文 HTML；省略时从标准输入读取。")
+    args = parser.parse_args(argv)
+
+    cover_path = args.cover_path or os.environ.get('WECHAT_COVER_PATH', 'image_001.jpg')
+    title      = args.title if args.title is not None else input("标题: ")
+    digest     = args.digest if args.digest is not None else input("摘要: ")
+    content    = (args.content if args.content is not None else sys.stdin.read()
                   .replace('\\n', '\n'))
 
     token   = get_token()
