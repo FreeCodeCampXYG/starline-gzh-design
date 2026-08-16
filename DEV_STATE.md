@@ -41,6 +41,7 @@
 - 已新增 `tests/test_release_behaviors.py`，固定验证半宽组件拦截、全宽组件放行、HTML 压缩和 5 个公开脚本帮助入口。
 - 已用 `starline-meta-skill` 导出 `reports/skill-ir.json` 与通过的 `reports/trigger-eval.json`，满足版本和评估报告一致性门禁。
 - 2026-08-16：预览页新增「复制标题」一键复制功能：`wrap_preview.py` 新增 `--title` 参数（建议标题可改、HTML 转义），`assets/preview-template.html` 增加可修改的建议标题顶栏与「复制标题」按钮（保留「复制到公众号」正文复制）；SKILL.md 方向一流程与 README 一键复制说明同步更新。
+- 2026-08-17：移除中英文 README 的企业微信交流群二维码、Star History 图与公众号名片等推广内容，署名统一为 StarLine 并移除联名署名；版本升至 1.3.1（manifest/SKILL.md/skill-ir 同步）；发布 tag v1.3.1 与 GitHub Release。
 
 ## Key Decisions
 - #6 是与 #7 重复的已关闭 PR，未重复合并；采用包含主题推荐规则的 #7。
@@ -103,7 +104,7 @@
 ## Known Issues
 - `docs/gallery/index.html` 是导航网页，不是公众号正文，不能送入 `validate_gzh_html.py`；文章画廊文件与导航页需分开校验。
 - #3、#5、#12、#13 当前仍是无提交 issue；其中 #5 描述不足，#12/#13 需要明确设计方案后再实现。#8 已基于真实粘贴复现独立实现兼容规则，但仍没有可归因的上游提交。
-- 本地安装目录不是 Git 工作树；v1.3.0 已完成 GitHub Fork 同步，尚未创建 Release（版本号与发布说明待确认）。
+- 本地安装目录不是 Git 工作树；v1.3.1 已发布（tag + GitHub Release），安装目录已同步至与仓库一致。
 
 ## Failed Approaches
 
