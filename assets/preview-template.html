@@ -12,16 +12,26 @@
   .gzh-copy{background:#059669;color:#fff;border:0;border-radius:9px;padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 3px 10px rgba(5,150,105,.28);white-space:nowrap;transition:transform .08s,background .15s;}
   .gzh-copy:hover{background:#047857;}
   .gzh-copy:active{transform:translateY(1px);}
-  .gzh-toast{position:fixed;top:66px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;padding:11px 20px;border-radius:10px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:88vw;text-align:center;}
+  .gzh-titlebar{position:fixed;top:54px;left:0;right:0;min-height:58px;background:#ffffff;box-shadow:0 1px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:10px;padding:9px 16px;z-index:98;box-sizing:border-box;}
+  .gzh-title-input{flex:1;min-width:0;border:1px solid #d1d5db;border-radius:8px;padding:9px 12px;font-size:14px;color:#111827;font-family:inherit;}
+  .gzh-title-input:focus{outline:none;border-color:#059669;}
+  .gzh-title-copy{background:#111827;color:#fff;border:0;border-radius:9px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .15s;}
+  .gzh-title-copy:hover{background:#374151;}
+  .gzh-title-copy:active{transform:translateY(1px);}
+  .gzh-toast{position:fixed;top:124px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;padding:11px 20px;border-radius:10px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:88vw;text-align:center;}
   .gzh-toast.show{opacity:1;}
-  .gzh-stage{max-width:700px;margin:78px auto 64px;padding:0 8px;}
-  @media(max-width:520px){.gzh-hint{max-width:150px;}}
+  .gzh-stage{max-width:700px;margin:128px auto 64px;padding:0 8px;}
+  @media(max-width:520px){.gzh-hint{max-width:150px;}.gzh-titlebar{flex-wrap:wrap;}.gzh-title-input{flex:1 1 100%;}}
 </style>
 </head>
 <body>
 <div class="gzh-toolbar">
   <span class="gzh-hint">👇 下方是排版效果 · 点右侧 <b>复制</b> 直接粘到公众号</span>
   <button class="gzh-copy" id="gzhCopyBtn" onclick="gzhCopy()">📋 复制到公众号</button>
+</div>
+<div class="gzh-titlebar">
+  <input class="gzh-title-input" id="gzhTitleInput" value="{{TITLE}}" aria-label="文章标题（可修改）">
+  <button class="gzh-title-copy" id="gzhTitleCopyBtn" onclick="gzhCopyTitle()">✂️ 复制标题</button>
 </div>
 <div class="gzh-toast" id="gzhToast"></div>
 <div class="gzh-stage">
@@ -49,11 +59,27 @@
     sel.removeAllRanges();
     var btn=document.getElementById('gzhCopyBtn');
     if(ok){
-      gzhShowToast('✅ 已复制！去公众号编辑器按 Ctrl/⌘+V 粘贴即可');
+      gzhShowToast('✅ 已复制正文！去公众号编辑器按 Ctrl/⌘+V 粘贴即可');
       var old=btn.textContent;btn.textContent='✅ 已复制';
       setTimeout(function(){btn.textContent=old;},2200);
     }else{
       gzhShowToast('⚠ 自动复制失败，请手动全选(Ctrl/⌘+A)再复制(Ctrl/⌘+C)');
+    }
+  }
+  function gzhCopyTitle(){
+    var input=document.getElementById('gzhTitleInput');
+    var val=input.value.trim();
+    if(!val){gzhShowToast('⚠ 标题为空，请先填写');return;}
+    input.focus();input.select();input.setSelectionRange(0,val.length);
+    var ok=false;
+    try{ok=document.execCommand('copy');}catch(e){ok=false;}
+    var btn=document.getElementById('gzhTitleCopyBtn');
+    if(ok){
+      gzhShowToast('✅ 标题已复制，去公众号标题栏按 Ctrl/⌘+V 即可');
+      var old=btn.textContent;btn.textContent='✅ 已复制';
+      setTimeout(function(){btn.textContent=old;},2200);
+    }else{
+      gzhShowToast('⚠ 自动复制失败，请手动 Ctrl/⌘+C');
     }
   }
 </script>
