@@ -1,13 +1,16 @@
 interface:
   display_name: "Starline GZH Design"
   author: "墨点星痕 (starline)"
-  short_description: "把 Markdown、Word、PDF 或纯文本排成可直接粘贴到微信公众号的内联 HTML"
-  default_prompt: "Use $starline-gzh-design to convert my article into paste-ready WeChat HTML. First identify the reader's primary job and keep organizational frameworks secondary unless the article is explicitly about them. Reuse my confirmed public author name and one-line bio from the project DEV_STATE.md or ask for both once and save them there; never deliver identity placeholders. Then select a registered theme, preserve the source, avoid half-width flex columns, validate to zero errors and warnings, and generate a browser preview."
+  short_description: "AI 原生公众号内容与视觉编排：直接编辑、选区改写、差异审阅、简历信息模块与可校验技术图"
+  default_prompt: "Use $starline-gzh-design as an AI-native WeChat content and visual workbench. Normalize the source, identify the reader's job, preserve user facts, and let the user edit blocks directly. For AI changes, target an explicit selection and show before/after with accept, reject, partial-keep, and reversible history; never silently overwrite. For diagrams, use the installed fireworks-tech-graph workflow to structure, validate, render, and retain editable source data. Reuse confirmed public identity, select a registered theme, validate paste-safe HTML to zero errors and warnings, and generate a browser preview."
   examples:
     - "用 starline-gzh-design 把这篇 Markdown 排成公众号 HTML"
     - "直接用科技钴蓝主题一键排版这篇文章"
     - "先标注再排版，确认后生成公众号 HTML"
     - "把本地图片上传图床后排版，并生成可复制预览页"
+    - "选中这一段，让 AI 改得更有说服力，但先给我看差异"
+    - "把这篇文章的产品流程做成可编辑的 fireworks SVG 并嵌入公众号"
+    - "把我的经历整理成公众号里的简历信息模块，不要虚构内容"
 compatibility:
   canonical_format: "agent-skills"
   adapter_targets:

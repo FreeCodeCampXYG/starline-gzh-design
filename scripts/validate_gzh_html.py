@@ -37,6 +37,10 @@ FORBIDDEN = [
     (re.compile(r"var\s*\(\s*--", re.I), "ERROR", "CSS 变量 var(--x) 不被支持，请写死值"),
     (re.compile(r"url\s*\(\s*['\"]?https?://[^)]*\.(woff2?|ttf|otf|eot)", re.I),
      "ERROR", "外部字体不被支持"),
+    (re.compile(r"<svg\b|</svg>|data:image/svg\+xml|foreignObject", re.I), "ERROR",
+     "SVG、SVG data URI 和 foreignObject 默认只能作为工作区源，不得进入公众号正文"),
+    (re.compile(r"(?:href|src)\s*=\s*['\"]?\s*(?:javascript:|vbscript:|data:)", re.I), "ERROR",
+     "危险资源协议不被支持"),
 ]
 
 CJK = re.compile(r"[一-鿿㐀-䶿]")

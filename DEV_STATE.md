@@ -1,5 +1,14 @@
 # DEV_STATE
 
+## 2026-08-20 AI 编辑工作台升级
+
+- 目标：在保留公众号安全 HTML 排版能力的基础上，增加直接编辑、选区级 AI 改写差异审阅、事实保真简历信息模块，以及 fireworks-tech-graph 技术图接入。
+- 已完成：新增 `references/ai-editor-workbench.md`、`references/fireworks-integration.md`、`references/wechat-media-contract.md`、`scripts/edit_contract.py` 及编辑/媒体回归测试；更新 `SKILL.md`、`agents/interface.yaml`、`manifest.json`、README、触发用例与 Production 证据报告；工作副本已同步到 `C:\Users\xiaoy\.agents\skills\starline-gzh-design`。
+- 关键决策：AI 只能作用于明确块/选区并提供 before/after、接受/拒绝/回退；技术图保留 JSON/SVG 源，先校验再输出；完整简历 ATS/PDF/岗位定制转交 qiaomu-campus-resume；离线交互 HTML 不进入公众号正文。
+- 联网研究：参考微排版编辑器、AI 智能排版文章、QuantumFloret/ai-editor、Nimbalyst 等公开资料；统一 prior-art runner 因 Windows 找不到 npx 失败，已在 `reports/prior-art-research.md` 标注 missing evidence。
+- 验证：20/20 组件库 ERROR×0/WARN×0；`validate_skill.py` 工作副本与安装目录均通过；10/10 回归测试通过；脚本 compileall 通过。新触发用例已写入，但仓库没有 trigger_eval.py，需宿主触发运行器执行。
+- 未完成：真实微信粘贴、AI provider 对比、技术图 PNG 视觉人工复核和远端发布均未执行。
+
 ## Current Goal
 - 在 `.agents/skills/starline-gzh-design` 和 `FreeCodeCampXYG/starline-gzh-design` 维护可直接使用、可核对来源、可规范提交 Issue/PR 的 Starline 微信公众号排版 skill。
 - 当前增量目标：把“读者任务优先、整理法则降级”和“关键结构禁止 50% 半宽列”固化为排版流程、组件模板、确定性校验与回归用例。
@@ -40,8 +49,6 @@
 - 已为 `component_lint.py`、`minify_gzh_html.py`、`upload_image.py`、`wechat_draft.py`、`wrap_preview.py` 补齐 `argparse --help`，保留原有位置参数调用方式。
 - 已新增 `tests/test_release_behaviors.py`，固定验证半宽组件拦截、全宽组件放行、HTML 压缩和 5 个公开脚本帮助入口。
 - 已用 `starline-meta-skill` 导出 `reports/skill-ir.json` 与通过的 `reports/trigger-eval.json`，满足版本和评估报告一致性门禁。
-- 2026-08-16：预览页新增「复制标题」一键复制功能：`wrap_preview.py` 新增 `--title` 参数（建议标题可改、HTML 转义），`assets/preview-template.html` 增加可修改的建议标题顶栏与「复制标题」按钮（保留「复制到公众号」正文复制）；SKILL.md 方向一流程与 README 一键复制说明同步更新。
-- 2026-08-17：移除中英文 README 的企业微信交流群二维码、Star History 图与公众号名片等推广内容，署名统一为 StarLine 并移除联名署名；版本升至 1.3.1（manifest/SKILL.md/skill-ir 同步）；发布 tag v1.3.1 与 GitHub Release。
 
 ## Key Decisions
 - #6 是与 #7 重复的已关闭 PR，未重复合并；采用包含主题推荐规则的 #7。
@@ -104,7 +111,7 @@
 ## Known Issues
 - `docs/gallery/index.html` 是导航网页，不是公众号正文，不能送入 `validate_gzh_html.py`；文章画廊文件与导航页需分开校验。
 - #3、#5、#12、#13 当前仍是无提交 issue；其中 #5 描述不足，#12/#13 需要明确设计方案后再实现。#8 已基于真实粘贴复现独立实现兼容规则，但仍没有可归因的上游提交。
-- 本地安装目录不是 Git 工作树；v1.3.1 已发布（tag + GitHub Release），安装目录已同步至与仓库一致。
+- 本地安装目录不是 Git 工作树；v1.3.0 当前只更新本地可用 Skill，无法在此目录执行 Git 差异检查，也尚未同步到 GitHub Fork 或创建 Release。
 
 ## Failed Approaches
 

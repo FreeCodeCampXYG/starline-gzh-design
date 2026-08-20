@@ -4,9 +4,9 @@
 
 # starline-gzh-design · 公众号排版技能
 
-**把 Markdown 一键排成可直接粘贴进微信公众号编辑器的精致 HTML**
+**把文章变成可编辑、可审阅、可直接粘贴进微信公众号的内容与视觉作品**
 
-9 套精选主题 + 主题生成器 · 代码块/图片/GIF · 自动章节编号与关键词标记 · 双关卡质量校验
+9 套精选主题 + 主题生成器 · AI 选区改写与差异审阅 · 可编辑技术图 · 代码块/图片/GIF · 双关卡质量校验
 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blue)](https://claude.ai/code)
