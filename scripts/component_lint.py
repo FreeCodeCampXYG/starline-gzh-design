@@ -18,6 +18,10 @@ import os
 import re
 import sys
 
+from console_utils import safe_print
+
+print = safe_print
+
 CJK = re.compile(r"[一-鿿㐀-䶿]")
 
 # (正则, 级别, 说明) —— 在每个 ```html 组件块内检查

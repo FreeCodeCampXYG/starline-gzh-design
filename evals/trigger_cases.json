@@ -22,6 +22,8 @@
       "先标注",
       "直接编辑",
       "选中改写",
+      "选中",
+      "AI",
       "AI 改写",
       "差异",
       "接受修改",
@@ -38,6 +40,7 @@
     ],
     "html_output": [
       "HTML",
+      "本地预览",
       "草稿箱",
       "草稿",
       "图床",
@@ -53,14 +56,21 @@
       "SVG",
       "PNG",
       "fireworks",
-      "简历模块"
+      "简历模块",
+      "简历信息模块"
     ]
   },
   "negative_patterns": [
     "不要公众号排版",
+    "不需要公众号排版",
     "不是公众号",
     "普通网页",
+    "网页预览",
     "落地页",
+    "GitHub Pages",
+    "Pages 部署",
+    "静态站点",
+    "多页面网站",
     "做 PPT",
     "只写内容"
   ],
@@ -94,7 +104,7 @@
       "family": "pdf_to_draft"
     },
     {
-      "text": "选中这一段，让 AI 改得更有说服力，但先给我看差异。",
+      "text": "在这篇公众号文章里，选中这一段，让 AI 改得更有说服力，但先给我看差异。",
       "family": "selection_ai_edit"
     },
     {
@@ -102,8 +112,12 @@
       "family": "technical_diagram"
     },
     {
-      "text": "把我的经历整理成公众号里的简历信息模块，不要虚构内容。",
+      "text": "把这篇 Markdown 里的经历整理成公众号简历信息模块，不要虚构内容。",
       "family": "resume_content_module"
+    },
+    {
+      "text": "把这篇公众号文章排版成 HTML，并生成一个本地预览文件，不要部署 Pages。",
+      "family": "local_preview_only"
     }
   ],
   "should_not_trigger": [
@@ -126,6 +140,18 @@
     {
       "text": "把这篇英文文章翻译成中文。",
       "family": "translation"
+    },
+    {
+      "text": "把这个 Markdown 发布成 GitHub Pages 站点。",
+      "family": "github_pages"
+    },
+    {
+      "text": "做一个多页面网站，不涉及微信公众号。",
+      "family": "website"
+    },
+    {
+      "text": "只要一个网页预览，不需要公众号排版。",
+      "family": "web_preview"
     }
   ],
   "near_neighbor": [
@@ -148,6 +174,10 @@
     {
       "text": "把图片上传到对象存储，返回公网 URL。",
       "family": "generic_image_upload"
+    },
+    {
+      "text": "生成本地预览 HTML，但不要上线或配置 GitHub Pages。",
+      "family": "local_preview_without_wechat"
     }
   ]
 }

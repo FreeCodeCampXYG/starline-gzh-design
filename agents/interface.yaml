@@ -1,8 +1,8 @@
 interface:
   display_name: "Starline GZH Design"
   author: "墨点星痕 (starline)"
-  short_description: "AI 原生公众号内容与视觉编排：直接编辑、选区改写、差异审阅、简历信息模块与可校验技术图"
-  default_prompt: "Use $starline-gzh-design as an AI-native WeChat content and visual workbench. Normalize the source, identify the reader's job, preserve user facts, and let the user edit blocks directly. For AI changes, target an explicit selection and show before/after with accept, reject, partial-keep, and reversible history; never silently overwrite. For diagrams, use the installed fireworks-tech-graph workflow to structure, validate, render, and retain editable source data. Reuse confirmed public identity, select a registered theme, validate paste-safe HTML to zero errors and warnings, and generate a browser preview."
+  short_description: "AI 原生公众号内容与视觉编排：直接编辑、选区改写、差异审阅、简历信息模块、可校验技术图与本地预览 HTML"
+  default_prompt: "Use $starline-gzh-design as an AI-native WeChat content and visual workbench. Normalize the source, identify the reader's job, preserve user facts, and let the user edit blocks directly. For AI changes, target an explicit selection and show before/after with accept, reject, partial-keep, and reversible history; never silently overwrite. For diagrams, use the installed fireworks-tech-graph workflow to structure, validate, render, and retain editable source data. Reuse confirmed public identity, select a registered theme, validate paste-safe HTML to zero errors and warnings, and generate a local browser preview HTML. A local preview is not GitHub Pages or a website deployment; do not claim a hosted URL or route generic page/site requests here."
   examples:
     - "用 starline-gzh-design 把这篇 Markdown 排成公众号 HTML"
     - "直接用科技钴蓝主题一键排版这篇文章"

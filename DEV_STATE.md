@@ -1,5 +1,13 @@
 # DEV_STATE
 
+## 2026-08-21 Pages 路由边界与 Windows 控制台加固
+
+- 目标：修复本地预览 HTML 被误解为 GitHub Pages/网站部署的路由歧义，并让核心校验脚本在默认 GBK 控制台下仍能输出结果。
+- 已完成：新增 `references/output-boundaries.md`；更新 `SKILL.md`、中英文 README、`agents/interface.yaml`、触发用例与版本元数据至 1.4.1；新增 `scripts/console_utils.py`，接入组件源检查、HTML 校验、DOCX、图床、压缩、草稿和预览脚本。
+- 关键决策：本地预览只表示工作区 HTML 文件，不代表 Pages、静态站点、公网 URL 或已部署服务；无明确微信公众号意图的 page/pages/网页/站点请求不触发本 Skill。控制台只降级不可编码的装饰符号，保留中文诊断文本和退出码。
+- 验证：25/25 触发用例通过；11 项 Python 回归测试通过；21/21 组件库 ERROR×0/WARN×0；`validate_skill.py`、`compileall`、GBK 控制台回归通过。
+- 未完成：本次改动尚未完成 GitHub 功能分支、PR、Release 与干净安装验证；真实微信粘贴、AI provider 对比、技术图视觉复核仍缺证据。
+
 ## 2026-08-20 AI 编辑工作台升级
 
 - 目标：在保留公众号安全 HTML 排版能力的基础上，增加直接编辑、选区级 AI 改写差异审阅、事实保真简历信息模块，以及 fireworks-tech-graph 技术图接入。
@@ -11,7 +19,7 @@
 
 ## Current Goal
 - 在 `.agents/skills/starline-gzh-design` 和 `FreeCodeCampXYG/starline-gzh-design` 维护可直接使用、可核对来源、可规范提交 Issue/PR 的 Starline 微信公众号排版 skill。
-- 当前增量目标：把“读者任务优先、整理法则降级”和“关键结构禁止 50% 半宽列”固化为排版流程、组件模板、确定性校验与回归用例。
+- 当前增量目标：维护 1.4.1 的公众号排版、Pages 路由边界、Windows 控制台兼容和可审查发布链路。
 
 ## Completed Work
 - 已安装 `isjiamu/gzh-design-skill` 基础版，并迁移为本地 `name: starline-gzh-design`。
@@ -49,6 +57,8 @@
 - 已为 `component_lint.py`、`minify_gzh_html.py`、`upload_image.py`、`wechat_draft.py`、`wrap_preview.py` 补齐 `argparse --help`，保留原有位置参数调用方式。
 - 已新增 `tests/test_release_behaviors.py`，固定验证半宽组件拦截、全宽组件放行、HTML 压缩和 5 个公开脚本帮助入口。
 - 已用 `starline-meta-skill` 导出 `reports/skill-ir.json` 与通过的 `reports/trigger-eval.json`，满足版本和评估报告一致性门禁。
+- 已将本地预览与 Pages/静态站点边界写入 `references/output-boundaries.md`，并加入 GitHub Pages、网站和网页预览误触发回归用例。
+- 已用 `console_utils.py` 统一降级 Windows GBK 不支持的装饰符号；默认编码下 `component_lint.py` 与 `validate_gzh_html.py` 均可完成并保留正确退出码。
 
 ## Key Decisions
 - #6 是与 #7 重复的已关闭 PR，未重复合并；采用包含主题推荐规则的 #7。
@@ -56,6 +66,7 @@
 - API 草稿箱、图床和脚注能力继续放在同一个 `gzh-design` skill 中。
 - 苹果公开课风用系统蓝、细线与大留白建立层级；来源致谢放在正文完成后、参考资料前，不打断开场且不省略署名。
 - Windows 控制台含 emoji 的脚本验证使用 `PYTHONIOENCODING=utf-8`，文件内容按 UTF-8 处理。
+- CLI 诊断通过 `scripts/console_utils.py` 对不可编码装饰符号做 ASCII 降级；文件仍按 UTF-8 读写，避免把控制台乱码写回源文件。
 - 已将本地目录从 `.agents/skills/gzh-design` 移动为 `.agents/skills/starline-gzh-design`；上游 URL 和 `~/.gzh-design` 图床配置路径保持不变，以兼容已有配置。
 - 已补齐 Starline 包元数据：`manifest.json`、`agents/interface.yaml`，并在根 `SKILL.md` 写入 author/version/upstream metadata。
 - GitHub Issue 默认不接受空白提交；非主题能力使用独立的 `Feature request` 模板，避免与主题设计需求混杂。
@@ -65,6 +76,7 @@
 - #8 没有可合并提交，但本次已有真实公众号粘贴截图和可复现的父级 flex／子项半宽失效结构，因此独立实现窄范围兼容规则，不声称合并了上游修复。
 - 未全局禁止 `flex-wrap`：其它主题仍用它处理自适应标签；只确定性禁止会导致半屏空白的 50% 固定半宽列，并要求关键关系使用全宽块级结构。
 - 本次属于生产故障的定向泛化，不做新的 prior-art 搜索；通过显式反例保留“文章本身讲 STAR 时可把 STAR 作为主主题”的边界。
+- 本次不把“预览页”改名为 Pages 或新增站点发布能力；通过独立输出边界文档和触发反例修复路由误判，保持公众号排版职责单一。
 
 ## Core Files
 - `SKILL.md`
@@ -79,6 +91,7 @@
 - `.github/PULL_REQUEST_TEMPLATE.md`
 - `references/theme-index.md`
 - `references/content-hierarchy.md`
+- `references/output-boundaries.md`
 - `references/theme-klein-blue.md`
 - `references/theme-apple-open-course.md`
 - `references/theme-tech-cobalt.md`
@@ -91,6 +104,7 @@
 - `reports/trigger-eval.json`
 - `tests/test_release_behaviors.py`
 - `scripts/validate_gzh_html.py`
+- `scripts/console_utils.py`
 - `scripts/component_lint.py`
 - `scripts/extract_docx.py`
 - `scripts/wechat_draft.py`

@@ -15,6 +15,10 @@
 import argparse
 import re
 
+from console_utils import safe_print
+
+print = safe_print
+
 
 def minify_html(html):
     """

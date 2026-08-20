@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 import tempfile
@@ -62,6 +63,34 @@ class CommandLineCompatibilityTests(unittest.TestCase):
     def test_minifier_removes_source_whitespace(self):
         source = "<!-- 注释 --><section>\n  <p>正文</p>\n</section>"
         self.assertEqual("<section><p>正文</p></section>", minify_html(source))
+
+    def test_core_validators_are_safe_on_gbk_console(self):
+        """默认 GBK 控制台不能让校验脚本因装饰符号直接崩溃。"""
+        env = dict(os.environ)
+        env["PYTHONIOENCODING"] = "gbk"
+        commands = (
+            (
+                "component_lint.py",
+                str(ROOT),
+            ),
+            (
+                "validate_gzh_html.py",
+                str(ROOT / "docs" / "gallery" / "graphite-minimal.html"),
+            ),
+        )
+        for script, argument in commands:
+            with self.subTest(script=script):
+                result = subprocess.run(
+                    [sys.executable, str(SCRIPTS / script), argument],
+                    capture_output=True,
+                    text=True,
+                    encoding="gbk",
+                    errors="strict",
+                    env=env,
+                    check=False,
+                )
+                self.assertEqual(0, result.returncode, result.stderr)
+                self.assertNotIn("UnicodeEncodeError", result.stderr)
 
 
 if __name__ == "__main__":

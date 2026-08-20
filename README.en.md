@@ -32,13 +32,15 @@ A layout Skill for AI agents (Claude Code / Codex / Cursor …). You write Markd
 - **Full-width CJK punctuation** in prose; kept as-is inside code blocks.
 - **Paste-compatibility guardrails**: all styles inlined, every text node wrapped in `<span leaf="">`, and layout-critical 50% columns rejected; the real WeChat paste remains the final check.
 - **Two-gate quality checks**: `component_lint.py` (library source) + `validate_gzh_html.py` (final output) form a reproducible edit → verify → fix loop.
-- **One-click copy**: a preview page with a **Copy** button — click to copy the rich text and paste straight into WeChat, no manual select-all.
+- **One-click copy**: a local preview HTML with a **Copy** button — click to copy the rich text and paste straight into WeChat, no manual select-all.
+
+> Boundary: the “local preview HTML” is a workspace file, not GitHub Pages, a static site, or a hosted web page. This Skill never claims a public URL without deployment evidence; see [`references/output-boundaries.md`](references/output-boundaries.md).
 
 ## ✅ Good for / ❌ Not for
 
 **✅ Good for**: opinion/analysis · tutorials/how-tos · reviews/tool roundups · knowledge notes/methodology · interviews/features · data recaps · lifestyle/personal essays · case studies — turning Markdown / Word / PDF / plain text long-form into paste-ready WeChat HTML; also generating custom themes from a description or reference image.
 
-**❌ Not for**: generic web/landing pages (use a frontend skill) · slide decks (use a PPT skill) · pure image posters / social cards (use a social-card skill) · non-WeChat layout · **writing the article** (this skill only lays out — bring the Markdown first).
+**❌ Not for**: generic web/landing pages, GitHub Pages or static-site deployment (use a frontend/site skill) · slide decks (use a PPT skill) · pure image posters / social cards (use a social-card skill) · non-WeChat layout · **writing the article** (this skill only lays out — bring the Markdown first).
 
 ## 🗂 Common use cases
 
@@ -73,7 +75,7 @@ Seven themes currently have repository gallery HTML; Klein Blue Art Editorial an
 </tr>
 </table>
 
-> 📚 **Theme previews → [docs/all-themes.md](docs/all-themes.md)**　|　or open `docs/gallery/index.html` for the 7 local interactive HTML previews.
+> 📚 **Theme previews → [docs/all-themes.md](docs/all-themes.md)**　|　or open `docs/gallery/index.html` for the 7 local interactive HTML previews; these files are not a GitHub Pages deployment.
 
 ### Theme cheat-sheet
 
@@ -116,7 +118,7 @@ Then, once installed, tell your agent:
 4. **Parse Markdown** — headings, chapters, bold, highlight, quotes, images, code, lists.
 5. **Assemble HTML** — from real components; apply numbering, underlines, full-width punctuation, signature, and full-width critical structures.
 6. **Validate** — run `validate_gzh_html.py`, ship only at 0 ERROR.
-7. **Output** — a clean fragment + a preview page with a **Copy** button; open it, click "Copy to WeChat", then paste into the editor (no manual select-all).
+7. **Output** — a clean fragment + a local preview HTML with a **Copy** button; open it, click "Copy to WeChat", then paste into the editor (no manual select-all). No Pages/site deployment is implied.
 
 ## 🧩 Platform limits (enforced)
 

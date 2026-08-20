@@ -1,12 +1,12 @@
 {
   "name": "starline-gzh-design",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "owner": "墨点星痕 (starline)",
   "author": {
     "name": "墨点星痕",
     "english_name": "starline"
   },
-  "updated_at": "2026-08-20",
+  "updated_at": "2026-08-21",
   "status": "active",
   "maturity_tier": "production",
   "lifecycle_stage": "local",
@@ -30,6 +30,8 @@
     "component_lint",
     "html_output_validation",
     "local_install_verification",
+    "console_encoding_fallback",
+    "local_preview_boundary",
     "ai_edit_diff_contract",
     "fireworks_svg_validation"
   ]
