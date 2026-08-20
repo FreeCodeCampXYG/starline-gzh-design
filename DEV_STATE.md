@@ -6,7 +6,7 @@
 - 已完成：新增 `references/output-boundaries.md`；更新 `SKILL.md`、中英文 README、`agents/interface.yaml`、触发用例与版本元数据至 1.4.1；新增 `scripts/console_utils.py`，接入组件源检查、HTML 校验、DOCX、图床、压缩、草稿和预览脚本。
 - 关键决策：本地预览只表示工作区 HTML 文件，不代表 Pages、静态站点、公网 URL 或已部署服务；无明确微信公众号意图的 page/pages/网页/站点请求不触发本 Skill。控制台只降级不可编码的装饰符号，保留中文诊断文本和退出码。
 - 验证：25/25 触发用例通过；11 项 Python 回归测试通过；21/21 组件库 ERROR×0/WARN×0；`validate_skill.py`、`compileall`、GBK 控制台回归通过。
-- 未完成：本次改动尚未完成 GitHub 功能分支、PR、Release 与干净安装验证；真实微信粘贴、AI provider 对比、技术图视觉复核仍缺证据。
+- 发布状态：功能分支、PR、Release 与干净安装验证均已完成；提交 `2ad04ed`、PR #5 与 Release/tag `v1.4.1` 已落地。真实微信粘贴、AI provider 对比、技术图视觉复核和 provider/人工输出证据仍缺证据。
 
 ## 2026-08-20 AI 编辑工作台升级
 
