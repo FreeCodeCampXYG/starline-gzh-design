@@ -1,9 +1,9 @@
 {
   "schema_version": "2.0.0-starline-lite",
-  "generated_at": "2026-08-20",
+  "generated_at": "2026-08-21",
   "package": {
     "name": "starline-gzh-design",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "owner": "墨点星痕 (starline)",
     "maturity_tier": "production",
     "lifecycle_stage": "local",
@@ -11,8 +11,8 @@
     "upstream_sync": {}
   },
   "intent": {
-    "description": "AI 原生微信公众号内容与视觉编排工作台：将 Markdown、Word、PDF 或纯文本归一化为可直接粘贴到微信公众号的安全 HTML，并支持主题组件、预览、用户直接编辑、选区级 AI 改写、可接受/拒绝/回退的差异记录、简历结构化编辑，以及通过 fireworks-tech-graph 生成可编辑且经几何校验的 SVG/PNG 技术图。支持图床、公号草稿 API、两阶段标注、自定义主题与图表源数据导出。触发场景：(1) 公众号排版、微信排版、gzh、文章转 HTML，(2) 自动排版、主题、预览、直接粘贴或草稿箱，(3) 用户想选中段落让 AI 润色/缩写/扩写/改标题/改语气并逐条确认，(4) 用户想做简历内容结构化编辑或根据事实优化简历，(5) 用户想在文章中插入流程图、架构图、数据流图、Agent 图或 SVG/PNG，需调用 fireworks-tech-graph，(6) 用户要求先标注、审阅、重渲染或回退。不用于普通网页/落地页/PPT，也不虚构简历经历或工程事实。",
-    "job_to_be_done": "AI 原生微信公众号内容与视觉编排工作台：将 Markdown、Word、PDF 或纯文本归一化为可直接粘贴到微信公众号的安全 HTML，并支持主题组件、预览、用户直接编辑、选区级 AI 改写、可接受/拒绝/回退的差异记录、简历结构化编辑，以及通过 fireworks-tech-graph 生成可编辑且经几何校验的 SVG/PNG 技术图。支持图床、公号草稿 API、两阶段标注、自定义主题与图表源数据导出。触发场景：(1) 公众号排版、微信排版、gzh、文章转 HTML，(2) 自动排版、主题、预览、直接粘贴或草稿箱，(3) 用户想选中段落让 AI 润色/缩写/扩写/改标题/改语气并逐条确认，(4) 用户想做简历内容结构化编辑或根据事实优化简历，(5) 用户想在文章中插入流程图、架构图、数据流图、Agent 图或 SVG/PNG，需调用 fireworks-tech-graph，(6) 用户要求先标注、审阅、重渲染或回退。不用于普通网页/落地页/PPT，也不虚构简历经历或工程事实。",
+    "description": "AI 原生微信公众号内容与视觉编排工作台：将 Markdown、Word、PDF 或纯文本归一化为可直接粘贴到微信公众号的安全 HTML，并支持主题组件、本地预览 HTML、用户直接编辑、选区级 AI 改写、可接受/拒绝/回退的差异记录、简历结构化编辑，以及通过 fireworks-tech-graph 生成可编辑且经几何校验的 SVG/PNG 技术图。支持图床、公号草稿 API、两阶段标注、自定义主题与图表源数据导出。触发场景：(1) 公众号排版、微信排版、gzh、文章转 HTML，(2) 自动排版、主题、本地预览、直接粘贴或草稿箱，(3) 用户想选中段落让 AI 润色/缩写/扩写/改标题/改语气并逐条确认，(4) 用户想做简历内容结构化编辑或根据事实优化简历，(5) 用户想在文章中插入流程图、架构图、数据流图、Agent 图或 SVG/PNG，需调用 fireworks-tech-graph，(6) 用户要求先标注、审阅、重渲染或回退。不用于普通网页/落地页、GitHub Pages/静态站点、PPT，也不虚构简历经历或工程事实。",
+    "job_to_be_done": "AI 原生微信公众号内容与视觉编排工作台：将 Markdown、Word、PDF 或纯文本归一化为可直接粘贴到微信公众号的安全 HTML，并支持主题组件、本地预览 HTML、用户直接编辑、选区级 AI 改写、可接受/拒绝/回退的差异记录、简历结构化编辑，以及通过 fireworks-tech-graph 生成可编辑且经几何校验的 SVG/PNG 技术图。支持图床、公号草稿 API、两阶段标注、自定义主题与图表源数据导出。触发场景：(1) 公众号排版、微信排版、gzh、文章转 HTML，(2) 自动排版、主题、本地预览、直接粘贴或草稿箱，(3) 用户想选中段落让 AI 润色/缩写/扩写/改标题/改语气并逐条确认，(4) 用户想做简历内容结构化编辑或根据事实优化简历，(5) 用户想在文章中插入流程图、架构图、数据流图、Agent 图或 SVG/PNG，需调用 fireworks-tech-graph，(6) 用户要求先标注、审阅、重渲染或回退。不用于普通网页/落地页、GitHub Pages/静态站点、PPT，也不虚构简历经历或工程事实。",
     "target_users": [
       "Starline operator"
     ],
@@ -34,23 +34,28 @@
       "公众号里的本地图片粘贴后不显示，帮我上传图床并重新排版。",
       "参考这张图，为我的公众号生成一套可复用主题组件库。",
       "把这份 PDF 归一化成文章，并生成微信公众号草稿。",
-      "选中这一段，让 AI 改得更有说服力，但先给我看差异。",
+      "在这篇公众号文章里，选中这一段，让 AI 改得更有说服力，但先给我看差异。",
       "把这篇文章的产品流程做成可编辑的 fireworks SVG 并嵌入公众号。",
-      "把我的经历整理成公众号里的简历信息模块，不要虚构内容。"
+      "把这篇 Markdown 里的经历整理成公众号简历信息模块，不要虚构内容。",
+      "把这篇公众号文章排版成 HTML，并生成一个本地预览文件，不要部署 Pages。"
     ],
     "should_not_trigger": [
       "帮我只写公众号选题内容，不要公众号排版。",
       "把这份需求做成普通网页落地页。",
       "根据这些资料做 PPT。",
       "检查这段 Python 代码为什么报错。",
-      "把这篇英文文章翻译成中文。"
+      "把这篇英文文章翻译成中文。",
+      "把这个 Markdown 发布成 GitHub Pages 站点。",
+      "做一个多页面网站，不涉及微信公众号。",
+      "只要一个网页预览，不需要公众号排版。"
     ],
     "near_neighbor": [
       "给我的产品官网设计一个苹果风格主题。",
       "分析这个 PDF 的核心观点，输出学习笔记。",
       "选中一段普通网页文案，让 AI 改写它。",
       "帮我给文章起一个更吸引人的标题。",
-      "把图片上传到对象存储，返回公网 URL。"
+      "把图片上传到对象存储，返回公网 URL。",
+      "生成本地预览 HTML，但不要上线或配置 GitHub Pages。"
     ]
   },
   "workflow": {
@@ -69,6 +74,7 @@
       "references\\fireworks-integration.md",
       "references\\format-normalize.md",
       "references\\image-host.md",
+      "references\\output-boundaries.md",
       "references\\theme-apple-open-course.md",
       "references\\theme-generator.md",
       "references\\theme-graphite-minimal.md",
@@ -79,10 +85,13 @@
       "references\\theme-olive-journal.md",
       "references\\theme-red-white.md",
       "references\\theme-tech-cobalt.md",
-      "references\\theme-zen-whitespace.md"
+      "references\\theme-zen-whitespace.md",
+      "references\\wechat-media-contract.md"
     ],
     "scripts": [
       "scripts\\component_lint.py",
+      "scripts\\console_utils.py",
+      "scripts\\edit_contract.py",
       "scripts\\extract_docx.py",
       "scripts\\minify_gzh_html.py",
       "scripts\\upload_image.py",

@@ -36,6 +36,10 @@ Python 用法（推荐）:
 import argparse
 import sys, os, json, re, datetime
 
+from console_utils import safe_print
+
+print = safe_print
+
 # ── 配置路径（可通过环境变量覆盖）───────────────────────────────────────
 # Token 缓存文件
 TOKEN_FILE = os.environ.get(

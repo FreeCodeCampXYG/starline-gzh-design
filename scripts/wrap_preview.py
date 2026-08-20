@@ -18,6 +18,10 @@ import argparse
 import html
 import os
 
+from console_utils import safe_print
+
+print = safe_print
+
 
 def main(argv=None):
     parser = argparse.ArgumentParser(

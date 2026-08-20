@@ -19,6 +19,10 @@ import sys
 import zipfile
 import xml.etree.ElementTree as ET
 
+from console_utils import safe_print
+
+print = safe_print
+
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 R = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
 A = "{http://schemas.openxmlformats.org/drawingml/2006/main}"

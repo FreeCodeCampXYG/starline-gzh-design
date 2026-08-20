@@ -50,7 +50,7 @@ python C:/Users/<用户名>/.agents/skills/starline-meta-skill/scripts/validate_
 
 ### 当前边界
 
-- 这是一个公众号排版 Skill，不负责代写文章，也不替代普通网页、PPT 或海报设计工具。
+- 这是一个公众号排版 Skill，不负责代写文章，也不替代普通网页、GitHub Pages/静态站点、PPT 或海报设计工具。
 - 当前主题索引登记 9 套主题，其中 7 套已有本地画廊 HTML，克莱因蓝与苹果公开课风暂未提供对应画廊文件。
 - Issue、Pull Request、分支合并和 Release 发布均需人工确认，不执行无审查的远端覆盖。
 
@@ -64,7 +64,9 @@ python C:/Users/<用户名>/.agents/skills/starline-meta-skill/scripts/validate_
 - **中文全角标点**：正文自动规范全角，代码块内原样保留。
 - **粘贴兼容兜底**：所有样式内联、文字 `<span leaf="">` 包裹，并禁止 50% 半宽关键列；真实公众号粘贴结果仍是最终标准。
 - **双关卡质量校验**：`component_lint.py`（组件库源头）+ `validate_gzh_html.py`（最终产物），构成可复现的「改→验→修」闭环。
-- **一键复制**：预览页带「复制到公众号」与「复制标题」两个按钮——正文富文本与建议标题（可修改）分别一键复制，直接粘进公众号，免手动全选。
+- **一键复制**：本地预览 HTML 带「复制到公众号」与「复制标题」两个按钮——正文富文本与建议标题（可修改）分别一键复制，直接粘进公众号，免手动全选。
+
+> 边界说明：这里的“本地预览 HTML”只是工作区文件，不是 GitHub Pages、静态站点或已部署网页；没有真实部署证据时不会声称存在公网 URL。详见 [`references/output-boundaries.md`](references/output-boundaries.md)。
 
 ## 👀 效果预览
 
@@ -90,7 +92,7 @@ python C:/Users/<用户名>/.agents/skills/starline-meta-skill/scripts/validate_
 </tr>
 </table>
 
-> 📚 **主题预览 → [docs/all-themes.md](docs/all-themes.md)**　｜　克隆后浏览器打开 `docs/gallery/index.html` 可看 7 套本地交互 HTML；完整主题清单见 `references/theme-index.md`。
+> 📚 **主题预览 → [docs/all-themes.md](docs/all-themes.md)**　｜　克隆后浏览器打开 `docs/gallery/index.html` 可看 7 套本地交互 HTML；这些文件不代表 GitHub Pages 部署，完整主题清单见 `references/theme-index.md`。
 
 ## ✅ 适合 / ❌ 不适合
 
@@ -161,7 +163,7 @@ git clone https://github.com/FreeCodeCampXYG/starline-gzh-design.git ~/.claude/s
 
 > 把 `draft.docx` 归一化为 Markdown，用石墨极简主题排版，并校验最终 HTML；发现 ERROR 时先修复再交付。
 
-> 将文章中的本地图片上传到已配置的图床，替换为公网 URL 后，用摸鱼绿主题生成公众号预览页。
+> 将文章中的本地图片上传到已配置的图床，替换为公网 URL 后，用摸鱼绿主题生成公众号本地预览 HTML。
 
 > 只检查 `output.html` 是否符合公众号限制，不改文章内容；列出具体错误和对应位置。
 
@@ -176,7 +178,7 @@ git clone https://github.com/FreeCodeCampXYG/starline-gzh-design.git ~/.claude/s
 7. **输出** — 两条路线任选其一：
 
    **路线一 · 手动粘贴**（适合电脑端直接发布）
-   生成预览页 → 浏览器打开 → 点右上角「复制」→ 公众号编辑器粘贴
+   生成本地预览 HTML → 浏览器打开 → 点右上角「复制」→ 公众号编辑器粘贴（不部署 Pages）
 
    **路线二 · API 上传**（适合自动化 / 无头发布）
    调用 `scripts/wechat_draft.py` 的 `upload_and_cleanup()`，草稿直接推送到公众号草稿箱，全程无需手动操作。
@@ -338,7 +340,6 @@ starline-gzh-design/
 - [x] 主题生成器：按描述/参考图生成自定义主题
 - [ ] 更多精选内置主题（欢迎 [提建议](../../issues/new?template=theme_request.md)）
 - [ ] 主题静态截图预览（docs/screenshots/）
-- [ ] GitHub Pages 在线画廊
 - [ ] 一键把整篇 Markdown + 配图打包导出
 
 ## ❓ FAQ

@@ -39,6 +39,10 @@ import time
 import urllib.request
 import uuid
 
+from console_utils import safe_print
+
+print = safe_print
+
 HOME_CFG = os.path.expanduser("~/.gzh-design")
 CONFIG_FILE = os.path.join(HOME_CFG, "image-host.json")
 CACHE_FILE = os.path.join(HOME_CFG, "upload-cache.json")

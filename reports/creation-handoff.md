@@ -2,10 +2,10 @@
 
 ## 1. Result
 
-- Skill: `starline-gzh-design` 1.4.0
+- Skill: `starline-gzh-design` 1.4.1
 - Job: 将公众号文章作为可编辑、可审阅、可回退的内容模型处理，并输出合规 HTML 与可校验技术图资产。
 - Local path: `D:\ProgGram\AIProjects\dshwork\starline-gzh-design`
-- Publication: 未请求发布；仅完成本地工作副本与安装目录同步。
+- Publication: 本次请求已明确要求发布；当前等待功能分支、PR、Release 与干净安装验证完成。
 
 ## 2. Reference skills and sources studied
 
